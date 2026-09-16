@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap, BoundaryNorm
 from tqdm import tqdm
 import collections
+import scipy.optimize
+import mpmath
 
 class ToppleStatistics():
     topples: int = 0
@@ -141,3 +143,61 @@ def visualise_statistic(
 
     else:
         plt.scatter(stat, counts, **kwargs)
+
+
+def compute_powerlaw_MLEs(
+        stat_series: np.ndarray[int]    # sequence of observations
+):
+    # MLE is solved by zeta'(s) / zeta(s) = -1/n sum(log(y_i))
+
+    nonzero = stat_series[stat_series > 0]
+    log_sum = 1/nonzero.size * sum(np.log(nonzero))
+
+    print(log_sum)
+
+    def root_function(s: float) -> float:
+        return mpmath.zeta(s, derivative=1) / mpmath.zeta(s, n=0) + log_sum
+
+    print(root_function(1.1), root_function(2), root_function(10))
+
+    # Solve using root finding:
+    s = mpmath.findroot(
+        f = root_function,
+        x0 = 2
+    )
+
+    return s
+
+    
+def neg_exp_trunc_pwr_log_likelihood(
+        params: tuple[float, float],
+        x: np.ndarray[int],     # vector of data
+) -> float:
+    alpha, l = params
+    sum_x = np.sum(x)
+    log_sum_x = np.sum(np.log(x))
+    n = x.size
+    constant = float(mpmath.polylog(alpha, np.exp(-l)))
+
+    loglik = -(n * np.log(constant) + alpha * log_sum_x + l * sum_x)
+
+    print(params, loglik)
+
+    return -loglik
+
+
+def compute_exp_trunc_pwr_mles(
+        x: np.ndarray[int]      # vector of data
+) -> tuple[float, float]:
+    return scipy.optimize.minimize(
+        fun = neg_exp_trunc_pwr_log_likelihood,
+        args=(x,), 
+        x0 = (2, 0.1),
+        bounds=[
+            (0, None),  # alpha > 0
+            (0, None)   # lambda > 0
+        ]
+    )
+
+
+
