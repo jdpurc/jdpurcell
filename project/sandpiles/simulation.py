@@ -10,7 +10,6 @@ from numba import njit
 def simulate_sandpiles(
         shape: tuple[int, int],                     # finite grid size
         n_steps: int,                               # number of simulation steps
-        seed: int,                                  # random seed
         board: np.ndarray[np.int8, np.int8] = None  # optional board to continue an earlier simulation
 ) -> tuple[np.ndarray[np.int8, np.int8], np.ndarray[np.int64], np.ndarray[np.int64], np.ndarray[np.int64], np.ndarray[np.int64]]:
 
@@ -23,8 +22,6 @@ def simulate_sandpiles(
     area = np.zeros(n_steps, dtype=np.int64)
     loss = np.zeros(n_steps, dtype=np.int64)
     length = np.zeros(n_steps, dtype=np.int64)
-
-    np.random.seed(seed)
 
     # initialise queue here to avoid initialisations in the simulation step for efficiency
     queue = np.empty((shape[0] * shape[1], 2), dtype=np.int64)
@@ -146,14 +143,8 @@ def _simulate_topple(
         
     return topple, area, loss, length
     
-    
 
-class ToppleStatistics():
-    topples: int = 0
-    area: int = 0
-    loss: int = 0
-    length: int = 0
-
+# wrapper class to easily access the statistics by name.
 class SandpileSimulation():
 
     board: np.ndarray[tuple[int, int]]
@@ -166,68 +157,11 @@ class SandpileSimulation():
     def __init__(
             self,
             shape: tuple[int, int],      # dimensions of the board
-            n_steps: int,                # number of grains dropped
-            seed: int,                   # random seed
+            n_steps: int,                # number of grains dropped (not including burn-in)
+            burn_in: int,                # number of iterations to throw away at the start
     ):
-        # initialize the empty board
-        self.board = np.zeros(shape)
+        # run the burn-in
+        self.board, _, _, _, _ = simulate_sandpiles(shape, burn_in)
 
-        self.topples = np.zeros(n_steps)
-        self.area = np.zeros(n_steps)
-        self.loss = np.zeros(n_steps)
-        self.length = np.zeros(n_steps)
-
-        np.random.default_rng(seed=seed)
-
-        for i in tqdm(range(0, n_steps)):
-
-            # drop a grain randomly:
-            row = np.random.randint(low=0, high=shape[0])
-            col = np.random.randint(low=0, high=shape[1])
-            self.board[row, col] += 1
-
-            if self.board[row, col] == 4:
-                self.board, stats = self._simulate_topple(self.board, shape, (row, col))
-                self.topples[i] = stats.topples
-                self.area[i] = stats.area
-                self.length[i] = stats.length
-                self.loss[i] = stats.loss
-
-
-    
-    
-
-def visualise_board(
-        board: np.ndarray[tuple[int, int]]
-):
-    cmap = ListedColormap(["white", "yellow", "orange", "red"])
-    norm = BoundaryNorm([0, 1, 2, 3, 4], cmap.N)
-
-
-    plt.imshow(
-        board,
-        cmap = cmap,
-        norm=norm
-    )
-    plt.colorbar()
-
-    plt.show()
-
-def visualise_statistic(
-        stat_series: np.ndarray[int],   # series to plot
-        include_zero: bool = False,     # whether to include 0 (i.e. do we care if there is no topple)
-        log: bool = False,              # whether to log the counts and stats
-        **kwargs                        # plot keyword arguments for formatting
-):
-    stat, counts = np.unique(stat_series, return_counts=True)
-
-    if log:
-        stat = np.log(stat)
-        counts = np.log(counts)
-
-    if not include_zero and stat[0] == 0:
-        plt.scatter(stat[1:], counts[1:], **kwargs)
-
-    else:
-        plt.scatter(stat, counts, **kwargs)
-
+        # run the simulation
+        self.board, self.topples, self.area, self.loss, self.length = simulate_sandpiles(shape, n_steps, self.board)

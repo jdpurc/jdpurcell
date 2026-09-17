@@ -8,7 +8,15 @@ def visualise_statistic(
         ax = None,                      # plot axes for formatting
         **kwargs                        # plot keyword arguments for formatting
 ):
+    # get the frequency by size of event
     stat, counts = np.unique(stat_series, return_counts=True)
+
+    # remove 0 if requested
+    if not include_zero and stat[0] == 0:
+        stat = stat[1:]
+        counts = counts[1:]
+
+    freq = counts / np.sum(counts)
 
     if ax is None:
         # generate the required axes
@@ -16,10 +24,6 @@ def visualise_statistic(
 
     if log:
         stat = np.log(stat)
-        counts = np.log(counts)
+        freq = np.log(freq)
 
-    if not include_zero and stat[0] == 0:
-        ax.scatter(stat[1:], counts[1:], **kwargs)
-
-    else:
-        ax.scatter(stat, counts, **kwargs)
+    ax.scatter(stat, freq, **kwargs)
