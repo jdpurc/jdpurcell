@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  8 OCT 2026 10:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  8 OCT 2026 19:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,7 +473,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip110
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 90.
+Package hyperref Info: Option `colorlinks' set `true' on input line 92.
 ) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/morefloats/morefloats.sty
 Package: morefloats 2025/01/28 v1.1a Raise limit of unprocessed floats (HMM)
 Package morefloats Info: Maximum number of possible floats asked for: 36
@@ -603,7 +603,7 @@ Package hyperref Info: Link coloring ON on input line 7.
 \openout2 = `cover.aux'.
 
  (./cover.tex
-<figures/uom_banner.pdf, id=28, 421.77576pt x 424.98775pt>
+<figures/uom_banner.pdf, id=32, 421.77576pt x 424.98775pt>
 File: figures/uom_banner.pdf Graphic file (type pdf)
 <use figures/uom_banner.pdf>
 Package pdftex.def Info: figures/uom_banner.pdf  used on input line 6.
@@ -642,31 +642,50 @@ Chapter 1.
 
 ]
 Chapter 2.
+<figures/simulation_four_statistics.png, id=71, 619.3539pt x 619.3539pt>
+File: figures/simulation_four_statistics.png Graphic file (type png)
+<use figures/simulation_four_statistics.png>
+Package pdftex.def Info: figures/simulation_four_statistics.png  used on input line 11.
+(pdftex.def)             Requested size: 386.95897pt x 386.96292pt.
 ) (./powerlaw.tex
 
 [3
 
-]
+ <./figures/simulation_four_statistics.png>]
 Chapter 3.
+<figures/powerlaw_taus_taua_plot.png, id=88, 416.2752pt x 312.2064pt>
+File: figures/powerlaw_taus_taua_plot.png Graphic file (type png)
+<use figures/powerlaw_taus_taua_plot.png>
+Package pdftex.def Info: figures/powerlaw_taus_taua_plot.png  used on input line 48.
+(pdftex.def)             Requested size: 232.17242pt x 174.12933pt.
+<figures/powerlaw_mle_viz.png, id=90, 626.5809pt x 897.5934pt>
+File: figures/powerlaw_mle_viz.png Graphic file (type png)
+<use figures/powerlaw_mle_viz.png>
+Package pdftex.def Info: figures/powerlaw_mle_viz.png  used on input line 83.
+(pdftex.def)             Requested size: 386.95897pt x 554.33817pt.
 ) (./finitesizescaling.tex
 
 [4
 
 ]
+
+[5 <./figures/powerlaw_taus_taua_plot.png>]
+
+[6 <./figures/powerlaw_mle_viz.png>]
 Chapter 4.
 ) (./topplingnumber.tex
 
-[5
+[7
 
 ]
 Chapter 5.
 ) (./main.bbl
 
-[6
+[8
 
 ])
 
-[7
+[9
 
 ] (./main.aux (./cover.aux))
  ***********
@@ -674,21 +693,21 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: CB36C6C951A68C1FE9E650EC017A4C61;828.
+(rerunfilecheck)             Checksum: 9370B22AA231C81D560D5183E0DFD32F;989.
  ) 
 Here is how much of TeX's memory you used:
- 15881 strings out of 469686
- 254244 string characters out of 5474328
- 726442 words of memory out of 5000000
- 44036 multiletter control sequences out of 15000+600000
- 635929 words of font info for 69 fonts, out of 8000000 for 9000
+ 15971 strings out of 469686
+ 256076 string characters out of 5474328
+ 737442 words of memory out of 5000000
+ 44105 multiletter control sequences out of 15000+600000
+ 641351 words of font info for 89 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 82i,5n,84p,450b,467s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <c:/Users/purce/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (8 pages, 175610 bytes).
+ 82i,11n,84p,586b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <c:/Users/purce/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (10 pages, 524445 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 54 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 175 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

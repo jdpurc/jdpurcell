@@ -1,6 +1,91 @@
 \chapter{Power Law Fit}
 \begin{enumerate}
-    \item Linear regression fit and discussion about rigour of this approach
-    \item Naive Power law (Zeta) fit
-    \item Zeta with truncated $x_{max}$
+    \item Naive Power Law Fit
+    \item Hard Truncated Power Law Fit
+    \item (Optional) Note on Linear Regression
 \end{enumerate}
+
+\section{Naïve Power Law Fit}
+We hypothesize a power law scaling relationship for Toppling Size $S$ and area $A$ of the form:
+\begin{align*}
+    p(S=s; \tau, s_{max}) &\propto s^{-\tau_s}
+    p(A=a; \tau) &\propto a^{-\tau_a}
+\end{align*}
+
+In the above, $s_{max}$ and $a_{max}$ are known constants.
+
+Let $\mathbf{s} = (s_1, \cdots, s_T)^T, \mathbf{a} = (a_1, \cdots, a_T)^T$ be vectors representing the simulation data for topple size and area respectively.
+
+The likelihood function for topple size (and similarly area) is:
+
+\begin{align*}
+    \mathcal{L}(\mathbf{s}; \tau_s, s_{max}) &= \prod_{i=1}^T \frac{s_i^{-\tau_s}}{C_{\tau_s, s_{max}}} \\
+    \log \mathcal{L}(\mathbf{s}; \tau_s, s_{max}) &= -T \log C_{\tau_s, s_{max}} -\tau_s \sum_{i=1}^T \log{s_i} \\
+    \intertext{Where $C_{\tau_s, s_{max}}$ is the normalising constant:}
+    C_{\tau_s, s_{max}} &= \sum_{k=1}^{s_{max}} k^{-\tau_s}
+\end{align*}
+
+To estimate the parameters $\tau_s$ and $\tau_a$, we compute their Maximum Likelihood Estimates (MLEs).
+These are the values $\hat{\tau_s}$ and $\hat{\tau_a}$ that satisfy
+\[\hat{\tau_s} = \argmax_{\tau_s} \mathcal{L}(\mathbf{s}; \tau_s, s_{max}) = \argmin_{\tau_s} \left\{- \log \mathcal{L}(\mathbf{s}; \tau_s, s_{max}) \right\}\]
+and similarly for $\hat{\tau_a}$.
+
+Because the normalising constant $C_{\tau_s, s_{max}}$ depends on the parameter $\tau_s$, we cannot find an analytic solution and rely on numerical optimisation techniques.
+The numerical optimisation technique used here is the L-BFGS-B algorithm introduced by Byrd et al. (1995) \cite{byrd1995limited} and implemented in the \texttt{scipy} python library.
+
+Initially, we ignore the non-linear tails of the distribution and model the power law as though it is valid for all plausible values.
+For area, there is a natural upper bound $a_{max} = L^2$. 
+For topple size, which is in theory unbounded, we choose an arbitrary upper bound $s_{max} = 2 L^2$ which exceeded all observed topple sizes to compute the normalising constant.
+
+The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table \ref{tab:powerlaw_taus}.
+
+\begin{figure}[htbp]
+    \centering
+
+    % Left: Figure
+    \begin{minipage}[c]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/powerlaw_taus_taua_plot.png}
+        \captionof{figure}{Estimates MLEs for $\tau_s, \tau_a$ for varying lattice sizes $L$.}
+        \label{fig:powerlaw_taus}
+    \end{minipage}
+    \hfill
+    % Right: Table
+    \begin{minipage}[c]{0.48\textwidth}
+        \centering
+        \captionof{table}{MLE power-law slopes obtained for varying lattice sizes $L$}
+        \label{tab:powerlaw_taus}
+        \begin{tabular}{|l|c|r|}
+        \hline
+        $L$ & $\tau_s$ & $\tau_a$ \\
+        \hline
+            5 &  1.36 &  1.17 \\
+            10 &  1.22 &  1.12 \\
+            15 &  1.17 &  1.09 \\
+            20 &  1.14 &  1.09 \\
+            30 &  1.12 &  1.07 \\
+            40 &  1.11 &  1.07 \\
+            50 &  1.10 &  1.07 \\
+            65 &  1.10 &  1.07 \\
+            80 &  1.09 &  1.07 \\
+            100 &  1.09 &  1.08 \\
+        \hline
+        \end{tabular}
+    \end{minipage}
+
+\end{figure}
+
+However, inspection of the fit against data in Figure \ref{fig:powerlaw_fitted_mle} indicates that the estimated slope has been overestimated due to the non-powerlaw behaviour of the system at the tails.
+This effect appears to be most prominent in smaller lattice sizes, but still visibly impacts the fit for $L=100$.
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=0.80\linewidth]{figures/powerlaw_mle_viz.png}
+\end{center}
+\caption{Fitted MLEs for a power law distribution against the observed data.}
+\label{fig:powerlaw_fitted_mle}
+\end{figure} 
+
+As a first correction for the finite lattice effect, we consider restricting $s_{max}$ and $a_{max}$ to include only those topple sizes and areas for which linearity is observed in the log-log plot.
+To avoid manually setting an arbitrary maximum for each value of $L$, here we consider the rule-of-thumb approximation $s_{max}=a_{max}= 0.1 L^2$.
+Note in the analysis below, $L=5$ is excluded from the study as $s$

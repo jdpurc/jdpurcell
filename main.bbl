@@ -5,4 +5,9 @@ P.~Bak, C.~Tang, and K.~Wiesenfeld.
 \newblock Self-organized criticality: An explanation of the 1/f noise.
 \newblock {\em Physical review letters}, 59(4):381, 1987.
 
+\bibitem{byrd1995limited}
+R.~H. Byrd, P.~Lu, J.~Nocedal, and C.~Zhu.
+\newblock A limited memory algorithm for bound constrained optimization.
+\newblock {\em SIAM Journal on scientific computing}, 16(5):1190--1208, 1995.
+
 \end{thebibliography}

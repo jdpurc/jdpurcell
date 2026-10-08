@@ -2,28 +2,11 @@ import numpy as np
 from collections.abc import Callable
 import mpmath
 import scipy.optimize
+from scipy.special import logsumexp
 from typing import Any
 
 
-# ---
-# Distribution pmf/pdfs
-# ---
 
-# 1. Discrete power law distribution = zeta distributiom
-# p(x; s) = 1/zeta(s) x^(-s)
-#   x = 1, 2, ...
-#   s in (1, inf)
-
-def zeta_pmf(
-        params: tuple[float],   # parameter s
-        x: np.ndarray[int],     # data
-        loglik: bool = False    # log-pmf if true
-) -> np.ndarray[float]:
-    s, = params
-    if loglik:
-        return -np.log(float(mpmath.zeta(s))) - s * np.log(x)
-    else:
-        return 1 / float(mpmath.zeta(s))*np.power(x, -s)
 
 
 # 2. Exponentially Truncated Discrete Power Law Distribution
@@ -101,11 +84,12 @@ def compute_MLE(
     pmf: Callable,                          # pmf function f(params, x, log=True)
     p0: tuple[float, ],                     # parameter initial guess
     bounds: tuple[tuple[float, float], ],   # parameter space
+    pmf_kwargs: dict = {},                  # keyword arguments to pass to pmf
     logjac: Callable | None = None,         # jacobian of log-likelihood
-    **kwargs                                # other kwargs
+    **kwargs                                # other kwargs to pass to optimisation
 ) -> Any:
     def neg_loglik(params: tuple[float, ]) -> float:
-        return - np.sum(pmf(params, x, True))
+        return - np.sum(pmf(params=params, x=x, loglik=True, **pmf_kwargs))
 
     if logjac is not None:
         def neg_logjac(params: tuple[float, ]) -> float:
