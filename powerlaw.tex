@@ -39,7 +39,7 @@ For topple size, which is in theory unbounded, we choose an arbitrary upper boun
 
 The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table \ref{tab:powerlaw_taus}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
 
     % Left: Figure
@@ -53,8 +53,7 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
     % Right: Table
     \begin{minipage}[c]{0.48\textwidth}
         \centering
-        \captionof{table}{MLE power-law slopes obtained for varying lattice sizes $L$}
-        \label{tab:powerlaw_taus}
+        
         \begin{tabular}{|l|c|r|}
         \hline
         $L$ & $\tau_s$ & $\tau_a$ \\
@@ -71,6 +70,8 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
             100 &  1.09 &  1.08 \\
         \hline
         \end{tabular}
+        \captionof{table}{MLE power-law slopes obtained for varying lattice sizes $L$}
+        \label{tab:powerlaw_taus}
     \end{minipage}
 
 \end{figure}
@@ -78,7 +79,7 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
 However, inspection of the fit against data in Figure \ref{fig:powerlaw_fitted_mle} indicates that the estimated slope has been overestimated due to the non-powerlaw behaviour of the system at the tails.
 This effect appears to be most prominent in smaller lattice sizes, but still visibly impacts the fit for $L=100$.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/powerlaw_mle_viz.png}
 \end{center}
@@ -86,6 +87,56 @@ This effect appears to be most prominent in smaller lattice sizes, but still vis
 \label{fig:powerlaw_fitted_mle}
 \end{figure} 
 
+\newpage
+\section{Manually-truncated Power Law}
+
 As a first correction for the finite lattice effect, we consider restricting $s_{max}$ and $a_{max}$ to include only those topple sizes and areas for which linearity is observed in the log-log plot.
 To avoid manually setting an arbitrary maximum for each value of $L$, here we consider the rule-of-thumb approximation $s_{max}=a_{max}= 0.1 L^2$.
-Note in the analysis below, $L=5$ is excluded from the study as $s$
+Clearly, there are significant limitations to this approach: the cutoff rule was chosen arbitrarily, and data is significantly limited for lower values of L. However this will help us get a more accurate idea of the power law structure.
+The results in Table \ref{tab:powerlaw_trunc_taus} and Figure \ref{fig:powerlaw_trunc_taus} are noticeably lower than the previous estimates in Table \ref{tab:powerlaw_taus}, with an increasing trend rather than decreasing.
+From these two analyses, it is reasonable that the powerlaw-governed section of the distribution has exponent $\tau_s, \tau_a \approx 1$, which is consistent with previous papers \cite{bak1987self}. 
+
+\begin{figure}[H]
+    \centering
+
+    % Left: Figure
+    \begin{minipage}[c]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/powerlaw_trunc_taus_taua_plot.png}
+        \captionof{figure}{Estimates MLEs for $\tau_s, \tau_a$ for varying lattice sizes $L$.}
+        \label{fig:powerlaw_trunc_taus}
+    \end{minipage}
+    \hfill
+    % Right: Table
+    \begin{minipage}[c]{0.48\textwidth}
+        \centering
+        \begin{tabular}{|l|c|r|}
+        \hline
+        $L$ & $\tau_s$ & $\tau_a$ \\
+        \hline
+            5 &  0.82 &  0.82 \\
+            10 &  0.89 &  0.89 \\
+            15 &  0.97 &  0.96 \\
+            20 &  0.98 &  0.98 \\
+            30 &  0.99 &  0.98 \\
+            40 &  1.00 &  0.99 \\
+            50 &  1.01 &  1.00 \\
+            65 &  1.03 &  1.02 \\
+            80 &  1.03 &  1.02 \\
+            100 &  1.04 &  1.03 \\
+        \hline
+        \end{tabular}
+        \captionof{table}{MLE power-law slopes obtained for varying lattice sizes $L$ under the truncation rule $s_{max} = a_{max} = L^2/10$}
+        \label{tab:powerlaw_trunc_taus}
+    \end{minipage}
+
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.80\linewidth]{figures/powerlaw_trunc_mle_viz.png}
+\end{center}
+\caption{Fitted MLEs for a power law distribution against the observed data.}
+\label{fig:powerlaw_trunc_fitted_mle}
+\end{figure} 

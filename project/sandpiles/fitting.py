@@ -9,22 +9,7 @@ from typing import Any
 
 
 
-# 2. Exponentially Truncated Discrete Power Law Distribution
-# p(x; a, l) = 1 / Li_a(e^-l) x^(-a) e^(-l x)
-#   x = 1, 2, ...
-#   a in (0, inf)
-#   l in (0, inf)
 
-def etdpl_pmf(
-        params: tuple[float, float],    # parameters a, l
-        x: np.ndarray[int],             # data
-        loglik: bool = False            # log-pmf if true
-) -> np.ndarray[float]:
-    a, l = params
-    if loglik:
-        return -np.log(float(mpmath.polylog(a, np.exp(-l)))) - a * np.log(x) - l * x
-    else:
-        return 1 / float(mpmath.polylog(a, np.exp(-l))) * np.power(x, -a) * np.exp(-l * x)
 
 # 2. Super-Exponentially Truncated Discrete Power Law Distribution
 # p(x; a, l) = 1 / C x^(-a) e^(-l x^b)

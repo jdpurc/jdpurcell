@@ -34,7 +34,7 @@ def visualise_statistic(
 
     ax.plot(stat, freq, marker=marker, **kwargs)
 
-    if pmf and mle_params:
+    if pmf is not None:
         x = np.arange(1, max(stat)+1)
         y = pmf(params=mle_params, x=x, loglik=False, **pmf_kwargs)
         ax.plot(x, y, **mle_plot_kwargs)
