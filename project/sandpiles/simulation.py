@@ -1,11 +1,8 @@
 import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap, BoundaryNorm
-from tqdm import tqdm
 from numba import njit
 
 # Run the abelian sandpiles simulation
+# Compile the code in nopython mode for significant computational speedup
 @njit
 def simulate_sandpiles(
         shape: tuple[int, int],                     # finite grid size
