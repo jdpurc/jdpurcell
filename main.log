@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  22 OCT 2026 18:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  22 OCT 2026 21:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -262,7 +262,9 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 ) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/carlisle/slashed.sty
+))) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2025/03/13 v1.3e reserve vertical space
+) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/carlisle/slashed.sty
 Package: slashed 1997/01/16 v0.01 Feynman Slashed Character Notation (DPC)
 ) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
@@ -487,7 +489,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip110
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 98.
+Package hyperref Info: Option `colorlinks' set `true' on input line 99.
 ) (c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/morefloats/morefloats.sty
 Package: morefloats 2025/01/28 v1.1a Raise limit of unprocessed floats (HMM)
 Package morefloats Info: Maximum number of possible floats asked for: 36
@@ -617,7 +619,7 @@ Package hyperref Info: Link coloring ON on input line 7.
 \openout2 = `cover.aux'.
 
  (./cover.tex
-<figures/uom_banner.pdf, id=63, 421.77576pt x 424.98775pt>
+<figures/uom_banner.pdf, id=71, 421.77576pt x 424.98775pt>
 File: figures/uom_banner.pdf Graphic file (type pdf)
 <use figures/uom_banner.pdf>
 Package pdftex.def Info: figures/uom_banner.pdf  used on input line 6.
@@ -654,92 +656,112 @@ l.1 \chapter
 
 [2
 
-]) (./simulation.tex
+]
+<figures/toy_sandpiles.png, id=132, 455.301pt x 189.3474pt>
+File: figures/toy_sandpiles.png Graphic file (type png)
+<use figures/toy_sandpiles.png>
+Package pdftex.def Info: figures/toy_sandpiles.png  used on input line 71.
+(pdftex.def)             Requested size: 386.95897pt x 160.9316pt.
 
-[3]
+
+[3 <./figures/toy_sandpiles.png>]
+<figures/toy_deposition.png, id=152, 455.301pt x 260.172pt>
+File: figures/toy_deposition.png Graphic file (type png)
+<use figures/toy_deposition.png>
+Package pdftex.def Info: figures/toy_deposition.png  used on input line 103.
+(pdftex.def)             Requested size: 386.95897pt x 221.12737pt.
+) (./simulation.tex
+
+[4 <./figures/toy_deposition.png>]
  2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--28
+Underfull \hbox (badness 10000) in paragraph at lines 7--25
 
  []
 
-<figures/simulation_four_statistics.png, id=136, 632.3625pt x 619.3539pt>
+<figures/simulation_four_statistics.png, id=161, 632.3625pt x 619.3539pt>
 File: figures/simulation_four_statistics.png Graphic file (type png)
 <use figures/simulation_four_statistics.png>
-Package pdftex.def Info: figures/simulation_four_statistics.png  used on input line 40.
+Package pdftex.def Info: figures/simulation_four_statistics.png  used on input line 37.
 (pdftex.def)             Requested size: 386.95897pt x 379.00555pt.
 
 
-[4
+[5
 
-]) (./powerlaw.tex
+]
 
-[5 <./figures/simulation_four_statistics.png>]
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./powerlaw.tex
+
+[6]
+
+[7 <./figures/simulation_four_statistics.png>]
  3.
-<figures/powerlaw_taus_taua_plot.png, id=158, 416.2752pt x 312.2064pt>
+<figures/powerlaw_taus_taua_plot.png, id=184, 416.2752pt x 312.2064pt>
 File: figures/powerlaw_taus_taua_plot.png Graphic file (type png)
 <use figures/powerlaw_taus_taua_plot.png>
 Package pdftex.def Info: figures/powerlaw_taus_taua_plot.png  used on input line 48.
 (pdftex.def)             Requested size: 232.17242pt x 174.12933pt.
 
 
-[6
+[8
 
 ]
-<figures/powerlaw_mle_viz.png, id=170, 626.5809pt x 897.5934pt>
+<figures/powerlaw_mle_viz.png, id=194, 626.5809pt x 897.5934pt>
 File: figures/powerlaw_mle_viz.png Graphic file (type png)
 <use figures/powerlaw_mle_viz.png>
 Package pdftex.def Info: figures/powerlaw_mle_viz.png  used on input line 84.
 (pdftex.def)             Requested size: 386.95897pt x 554.33817pt.
 
 
-[7 <./figures/powerlaw_taus_taua_plot.png>]
+[9 <./figures/powerlaw_taus_taua_plot.png>]
 
-[8 <./figures/powerlaw_mle_viz.png>]
-<figures/powerlaw_trunc_taus_taua_plot.png, id=188, 416.2752pt x 315.0972pt>
+[10 <./figures/powerlaw_mle_viz.png>]
+<figures/powerlaw_trunc_taus_taua_plot.png, id=211, 416.2752pt x 315.0972pt>
 File: figures/powerlaw_trunc_taus_taua_plot.png Graphic file (type png)
 <use figures/powerlaw_trunc_taus_taua_plot.png>
 Package pdftex.def Info: figures/powerlaw_trunc_taus_taua_plot.png  used on input line 105.
 (pdftex.def)             Requested size: 232.17242pt x 175.74164pt.
-<figures/powerlaw_trunc_mle_viz.png, id=189, 643.203pt x 897.5934pt>
+<figures/powerlaw_trunc_mle_viz.png, id=212, 643.203pt x 897.5934pt>
 File: figures/powerlaw_trunc_mle_viz.png Graphic file (type png)
 <use figures/powerlaw_trunc_mle_viz.png>
 Package pdftex.def Info: figures/powerlaw_trunc_mle_viz.png  used on input line 138.
 (pdftex.def)             Requested size: 386.95897pt x 540.01198pt.
 ) (./finitesizescaling.tex
 
-[9 <./figures/powerlaw_trunc_taus_taua_plot.png>]
+[11 <./figures/powerlaw_trunc_taus_taua_plot.png>]
 
-[10 <./figures/powerlaw_trunc_mle_viz.png>]
+[12 <./figures/powerlaw_trunc_mle_viz.png>]
  4.
 
 
-[11
+[13
 
 ]
-<figures/powerlaw_exp_taus_taua_plot.png, id=210, 409.7709pt x 312.2064pt>
+<figures/powerlaw_exp_taus_taua_plot.png, id=234, 409.7709pt x 312.2064pt>
 File: figures/powerlaw_exp_taus_taua_plot.png Graphic file (type png)
 <use figures/powerlaw_exp_taus_taua_plot.png>
 Package pdftex.def Info: figures/powerlaw_exp_taus_taua_plot.png  used on input line 57.
 (pdftex.def)             Requested size: 232.17242pt x 176.89238pt.
-<figures/powerlaw_exp_mle_viz.png, id=212, 626.5809pt x 897.5934pt>
+<figures/powerlaw_exp_mle_viz.png, id=236, 626.5809pt x 897.5934pt>
 File: figures/powerlaw_exp_mle_viz.png Graphic file (type png)
 <use figures/powerlaw_exp_mle_viz.png>
 Package pdftex.def Info: figures/powerlaw_exp_mle_viz.png  used on input line 94.
 (pdftex.def)             Requested size: 386.95897pt x 554.33817pt.
 ) (./conclusion.tex
 
-[12 <./figures/powerlaw_exp_taus_taua_plot.png>]
+[14 <./figures/powerlaw_exp_taus_taua_plot.png>]
 
-[13 <./figures/powerlaw_exp_mle_viz.png>]
+[15 <./figures/powerlaw_exp_mle_viz.png>]
  5.
 ) (./main.bbl
 
-[14
+[16
 
 ])
 
-[15
+[17
 
 ] (./main.aux (./cover.aux))
  ***********
@@ -747,21 +769,21 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B19D43BD42DBAA4B61B54043F9C65B14;2064.
+(rerunfilecheck)             Checksum: 2BD485DAAEDE8BC06F5F70BFE473EFC7;2385.
  ) 
 Here is how much of TeX's memory you used:
- 16157 strings out of 469686
- 260058 string characters out of 5474328
- 746762 words of memory out of 5000000
- 44248 multiletter control sequences out of 15000+600000
- 645985 words of font info for 106 fonts, out of 8000000 for 9000
+ 16197 strings out of 469686
+ 261204 string characters out of 5474328
+ 747024 words of memory out of 5000000
+ 44281 multiletter control sequences out of 15000+600000
+ 645650 words of font info for 105 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  79i,11n,84p,941b,506s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <c:/Users/purce/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (16 pages, 834784 bytes).
+<c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (18 pages, 891966 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 276 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

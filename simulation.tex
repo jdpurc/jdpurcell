@@ -1,16 +1,11 @@
 \chapter{Simulation}
 
-\begin{itemize}
-    \item Describe the simulation procedure including implementation details (numba, burn-in)
-    \item Show plots of basic results found 
-    \item Describe the qualitative scaling behaviour observed across different $L$
-\end{itemize}
-
 \section{Method}
 
 The stationarity of sequences $\{S_j\}_{j\geq 1}$ and $\{A_j\}_{j\geq 1}$ forms the theoretical foundation for empirical simulation and analysis according to the following algorithm:
-
-initialise $\mathbf{s}, \mathbf{a}$ as empty arrays of size $n$ \\
+\needspace{18\baselineskip}
+\underline{\textbf{Algorithm: Simulating the Sandpile Model}}\\
+initialise $\mathbf{s}, \mathbf{a}, \mathbf{\ell}, \mathbf{d}$ as empty arrays of size $n$ \\
 initialise $\eta = \mathbf{0}$\\
 \textbf{for} $i \in \{1, \cdots, m \}$ \textbf{do}: \\
 simulate $\mathbf{X}_i$\\
@@ -20,8 +15,10 @@ $\eta \gets \xi(\eta)$\\
 \textbf{for} $i \in \{m + 1, \cdots, m + n \}$ \textbf{do}: \\
 simulate $\mathbf{X}_i$\\
 $\eta \gets \delta(\eta, \mathbf{X}_i)$\\
-$s[i-m] \gets s(\eta)$\\
-$a[i-m] \gets a(\eta)$\\
+$\mathbf{s}[i-m] \gets s(\eta)$\\
+$\mathbf{a}[i-m] \gets a(\eta)$\\
+$\mathbf{\ell}[i-m] \gets \ell(\eta)$\\
+$\mathbf{d}[i-m] \gets d(\eta)$\\
 $\eta \gets \xi(\eta)$\\
 \textbf{end for}\\
 \textbf{return} $\mathbf{s}, \mathbf{a}$\\

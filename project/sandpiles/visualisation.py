@@ -45,22 +45,22 @@ def visualise_sandpile(board: np.ndarray[np.int8, np.int8],
 
     if ax is None:
         fig, ax = plt.subplots()
+    else:
+        fig = ax.figure
     
-    im = ax.imshow(board)
+    im = ax.imshow(board, vmin=0, vmax = max(4, np.max(board)))
 
     r, c = board.shape
 
     # Show all ticks and label them with the respective list entries
-    ax.set_xticks(range(1, c+1), labels=[range(1, c+1)],
+    ax.set_xticks(range(c), labels=range(1, c+1),
                 rotation=45, rotation_mode="xtick")
-    ax.set_yticks(range(1, r+1), labels=[range(1, r+1)])
+    ax.set_yticks(range(r), labels=range(r, 0, -1))
 
     # Loop over data dimensions and create text annotations.
     for i in range(r):
         for j in range(c):
-            text = ax.text(j, i, board[i, j],
+            text = ax.text(j, i, str(board[i, j]),
                         ha="center", va="center", color="w")
 
-    ax.set_title("Harvest of local farmers (in tons/year)")
     fig.tight_layout()
-    plt.show()

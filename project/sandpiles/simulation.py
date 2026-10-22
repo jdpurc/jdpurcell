@@ -139,6 +139,11 @@ def _simulate_topple(
         qtail, qsize, loss = topple_helper(current[0], current[1] + 1, board, shape, queue, qtail, qsize, maxsize, loss)
         
     return topple, area, loss, length
+
+# allow a random seed to be set in numba
+@njit
+def set_seed(seed: int):
+    np.random.seed(seed)
     
 
 # wrapper class to easily access the statistics by name.
