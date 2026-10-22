@@ -17,6 +17,7 @@
 \usepackage{appendix}                   %appendices
 \setcounter{tocdepth}{1}                %level of detail in the table of contents
 \usepackage{float}
+\usepackage{parskip}
 
 %-----------MATH, TABULAR AND GRAPHICS PACKAGES
 \usepackage{amsfonts}                   %extra fonts in math mode
@@ -52,6 +53,7 @@
 %\setcounter{chapter}{-1}               %change the chapter seed
 \let\endtocpage\relax                   %no new page after table of contents
 \usepackage{tocloft}
+\renewcommand{\chaptername}{}
 
 %-----------MATH MODE SHORTCUTS
 \newcommand{\vect}[1]{\boldsymbol{#1}}                   %bold vector
@@ -61,6 +63,7 @@
 \newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} %for vectors of Greek letters
 \newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}}      %for unit vector
 \newcommand{\abs}[1]{\left| #1 \right|}                  %for absolute value
+\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}     % for vector norm
 \newcommand{\avg}[1]{\left< #1 \right>}                  %for average
 \let\underdot=\d                                         %rename builtin command \d{} to \underdot{}
 \newcommand{\deriv}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}                %for derivatives
@@ -79,6 +82,8 @@
 \newcommand{\curl}[1]{\gv{\nabla} \times #1}             %for curl
 \newcommand{\sch}{Schr$\ddot{\rm o}$dinger }
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Z}{\mathbb{Z}}
+
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 

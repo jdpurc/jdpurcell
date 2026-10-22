@@ -38,3 +38,29 @@ def visualise_statistic(
         x = np.arange(1, max(stat)+1)
         y = pmf(params=mle_params, x=x, loglik=False, **pmf_kwargs)
         ax.plot(x, y, **mle_plot_kwargs)
+
+
+def visualise_sandpile(board: np.ndarray[np.int8, np.int8], 
+                       ax = None):
+
+    if ax is None:
+        fig, ax = plt.subplots()
+    
+    im = ax.imshow(board)
+
+    r, c = board.shape
+
+    # Show all ticks and label them with the respective list entries
+    ax.set_xticks(range(1, c+1), labels=[range(1, c+1)],
+                rotation=45, rotation_mode="xtick")
+    ax.set_yticks(range(1, r+1), labels=[range(1, r+1)])
+
+    # Loop over data dimensions and create text annotations.
+    for i in range(r):
+        for j in range(c):
+            text = ax.text(j, i, board[i, j],
+                        ha="center", va="center", color="w")
+
+    ax.set_title("Harvest of local farmers (in tons/year)")
+    fig.tight_layout()
+    plt.show()

@@ -1,9 +1,91 @@
 \chapter{Introduction}
 
+
+
+\section{Motivation}
+
 \begin{enumerate}
     \item Introduce the BTW sandpiles model as a model for self-organised criticality and 1/f noise \cite{bak1987self}
     \item Define criticality, self-organised criticality, power law scaling, etc
-    \item Mathematically describe the BTW model and toppling condition
-    \item Describe modelling choices for power law and truncated power law distributions
-    \item Justify the validity of distribution modelling using markov chain theory
 \end{enumerate}
+
+\section{Mathematical Formulation of the BTW Model}
+The Abelian Sandpiles Model (or BTW Sandpile Model) was introduced by Bak, Tang, and Wiesenfeld in 1987 \cite{btw1987intro} as an example of a dynamical system driving itself towards criticality, exhibiting what they call "self-organised criticality".
+
+We introduce the sandpile model, adapting the notation of Járai, 2018 \cite{jaraisandpilenotes}.
+
+Define a two-dimensional square lattice with lattice size $L$ as the a graph $G_L = (V_L, E_L)$, where 
+\[V_L := \{(x, y) \in \Z^2: 1 \leq x, y \leq L\}\] 
+defines the set of vertices and 
+\[E_L := \{\mathbf{xy}: \mathbf{x}, \mathbf{y}\in V_L \land \norm{\mathbf{x}-\mathbf{y}}_1=1\}\] 
+defines the set of edges, where $\norm{\mathbf{x}-\mathbf{y}}_1$ denotes the $L_1$ norm, i.e. $\norm{(x_1, x_2)-(y_1, y_2)}_1 = \abs{x_1 - y_1} + \abs{x_2 - y_2}$.
+
+Let $N(\mathbf{x}) = \{\mathbf{y} \in V_L: \mathbf{xy} \in E_L\}$ be the neighbourhood of $\mathbf{x}$ in $G$.
+
+A sandpile is a map $\eta: V_L \to \Z_{\geq 0}$, and $\eta(\mathbf{x})$ is called the height at site $\mathbf{x}$.
+
+Define the critical height as $\eta_c := \max_{\mathbf{x}\in V_L} \deg_G(\mathbf{x})$. In the above setup, $\eta_c = 4$ provided $L \geq 3$. A site $\mathbf{x} \in V_L$ is called stable iff $\eta(\mathbf{x}) < \eta_c$ and is otherwise unstable. The sandpile $\eta$ is stable iff it is stable at each site $\mathbf{x} \in V_L$.
+
+Let $U_\eta = \{\mathbf{x} \in V_L: \eta(\mathbf{x}) \geq \eta_c\}$ be the set of unstable sites.
+
+Let $\Psi_{G_L} = \Z_{\geq 0}^{V_L}$ be the set of possible sandpiles and let $\Omega_{G_L} = \{0, 1, 2, ..., \eta_c - 1\}^{V_L}\subseteq \Psi_{G_L}$ be the set of stable sandpiles.
+
+
+
+A toppling is a function $\phi: \Psi_{G_L} \times V_L \to \Psi_{G_L}$ mapping $(\eta, \mathbf{x}) \mapsto \eta'$ where 
+\[\eta'(\mathbf{y}) = \begin{cases}
+    \eta(\mathbf{y}) + 1 & \mathbf{y} \in N(\mathbf{x}) \land \mathbf{x} \in U_\eta \\
+    \eta(\mathbf{y}) - \eta_c & \mathbf{y} = \mathbf{x} \in U_\eta \\
+    \eta(\mathbf{y}) & \text{otherwise}
+\end{cases}\]
+
+Note that we allow open boundary conditions in this study. When a toppling is initiated at a boundary site, we have $\ell(\eta, \mathbf{x}) := \sum_{\mathbf{x} \in V_L} \eta(\mathbf{x}) - \sum_{\mathbf{x} \in V_L} \eta'(\mathbf{x}) > 0$. This is called the loss associated with toppling $\eta$ at $\mathbf{x}$.
+
+The avalanche (stabilising) function $\xi: \Psi_{G_L} \to \Omega_{G_L}$ maps $\eta = \eta^{(0)} \mapsto \eta^{(s)}$ where $\eta^{(s)}$ is the stable sandpile output by the following algorithm:
+
+$i \gets 0$ \\
+\textbf{while} $U_{\eta^{(i)}} \neq \emptyset$ \textbf{do}:\\
+choose $\mathbf{x}^{(i+1)} \in U_{\eta^{(i)}}$ \\
+$\eta^{(i+1)} \gets \phi(\eta^{(i)}, \mathbf{x}^{(i+1)})$ \\
+$i \gets i + 1$ \\
+\textbf{end while} \\
+\textbf{return} $\eta^{(i)} = \eta^{(s)}$
+
+Avalanches can be described by a range of properties: 
+\begin{enumerate}
+    \item The avalanche (toppling) size is the final index $s(\eta) = s$
+    \item The avalanche (toppling) area $a(\eta)$ is the size of the set $\{\mathbf{x}^{(i)}: i\in \{1, \cdots, s\}\}$
+    \item The loss is $\ell(\eta) := \sum_{i=1}^{s} \ell(\eta^{(i-1)}, \mathbf{x}^{(i)})$
+    \item The $L_1$ length is $d(\eta) := \max_{i\in\{1, \cdots, s\}}\norm{\mathbf{x}^{(1)} - \mathbf{x}^{(i)}}_1$, with $d(\eta) := 0$ if $s=0$.
+\end{enumerate} 
+
+Note the constraints $0 \leq a(\eta) \leq s(\eta)$, $a(\eta) \leq L^2$, $d(\eta) \leq 2L$. 
+
+A proof that $\xi$ is well-defined and independent of the choice of $\mathbf{x}^{(j)}$ in the loop can be found in Járai, 2018 \cite{jaraisandpilenotes}. The abelian nature of the topplings were first shown by Dhar in 1990 \cite{dhar1990self}.
+
+\subsection{Probabilistic Framework}
+
+Define the deposition function $\delta: \Psi_{G_L} \times V_L \to \Psi_{G_L}$ as the map $\eta \mapsto \eta '$ with rule 
+\[\eta'(\mathbf{y}) = \begin{cases}
+    \eta(\mathbf{y}) + 1 & \mathbf{y} = \mathbf{x} \\
+    \eta(\mathbf{y}) & \mathbf{y} \neq \mathbf{x}
+\end{cases}\]
+
+
+We describe the sandpile evolution process by considering the sequence of iid random variables $\mathbf{X}_1, \mathbf{X}_2...$, each with support $V_L$ and pmf \[p(\mathbf{X}_j = \mathbf{x}) = L^{-2}\]
+
+This represents a sequence of uniformly chosen random vertices, which are taken as locations for grain deposition.
+
+From the sequence $\{X_j\}_{j\geq 1}$, we can build a sequence of stable sandpiles $\{\eta_j\}_{j \geq 0}$ with $\eta_0 = \mathbf{0}$ and $\eta_j = \xi(\delta(\eta_{j-1}, \mathbf{X}_j))$ for $j\geq 1$.
+
+Likewise, we obtain the sequence of avalanche sizes $\{S_j\}_{j\geq 1}$ where $S_j := s(\delta(\eta_{j-1}, \mathbf{X}_j))$. A similar construction yields sequences of avalanche areas, losses, and $L_1$ lengths.
+
+The sequence $\{\eta_j\}_{j \geq 0}$ forms a discrete Markov Chain with finite state space $\Omega_{G_L}$; the distribution of $\eta_{j+1}$ depends only on the previous state $\eta_j$ and the transition probability is determined by the distribution of $\mathbf{X}_{j}$.
+
+Jarai \cite{jaraisandpilenotes} discusses the Markov structure in detail, and proves that the distribution of states $\eta_j$ converges to a stationary distribution $\pi(\eta)$ as $j \to \infty$, where $\pi(\eta) > 0$ iff $\eta$ is a recurrent state in the Markov Chain.
+
+Consequently, the sequence of avalanche sizes $\{S_j\}_{j\geq 1}$ and the other avalanche statistic sequences, which are functions of the states $\eta_j$, also converge in distribution to stationary distributions as $j\to\infty$. 
+
+\subsection{Statistical Models}
+
+Describe modelling choices for power law and truncated power law distributions

@@ -6,10 +6,41 @@
     \item Describe the qualitative scaling behaviour observed across different $L$
 \end{itemize}
 
+\section{Method}
+
+The stationarity of sequences $\{S_j\}_{j\geq 1}$ and $\{A_j\}_{j\geq 1}$ forms the theoretical foundation for empirical simulation and analysis according to the following algorithm:
+
+initialise $\mathbf{s}, \mathbf{a}$ as empty arrays of size $n$ \\
+initialise $\eta = \mathbf{0}$\\
+\textbf{for} $i \in \{1, \cdots, m \}$ \textbf{do}: \\
+simulate $\mathbf{X}_i$\\
+$\eta \gets \delta(\eta, \mathbf{X}_i)$\\
+$\eta \gets \xi(\eta)$\\
+\textbf{end for}\\
+\textbf{for} $i \in \{m + 1, \cdots, m + n \}$ \textbf{do}: \\
+simulate $\mathbf{X}_i$\\
+$\eta \gets \delta(\eta, \mathbf{X}_i)$\\
+$s[i-m] \gets s(\eta)$\\
+$a[i-m] \gets a(\eta)$\\
+$\eta \gets \xi(\eta)$\\
+\textbf{end for}\\
+\textbf{return} $\mathbf{s}, \mathbf{a}$\\
+
+In the above, simulated states $\eta_1, \cdots, \eta_m$ are called burn-in states, and are discarded. After this period, we assume that the distribution of $\eta_j$ is approximately stationary. Therefore, simulations $\eta_{m+1}, \cdots, \eta_{m+n}$ are retained and their empirical distribution approximates the stationary distribution $\pi(\eta)$. From that sequence, we construct simulated sequences $S_j$ and $A_j$ of length $n$, whose distribution approximates $p(S)$ and $p(A)$ respectively.
+
+\section{Practicalities}
+In practice, hundreds of thousands of simulations are required to approach stationarity. This is computationally expensive, especially for large lattice sizes, because computations cannot be parallelised due to the Markov structure of the problem. 
+An initial Python implementation of the simulation procedure above was too slow to produce meaningful results. The final implementation uses \texttt{numba} with \texttt{njit} decorators, which stands for 'no python just in time' \cite{lam2015numba}. This compiles the Python code prior to execution, bypassing the CPython interpreter and achieving execution speed near code written in C. However, only a subset of Python and \texttt{numpy} functionality is permitted, requiring significant refactoring away from object-oriented design.
+
+\section{Results}
+Simulations were performed for lattice sizes $L \in \{5, 10, 20, 30, 40, 50, 65, 80, 100\}$. The burn-in period was set to $m=4\times 10^4$ and sequences of length $n=1 \times 10^6$ were retained for each lattice size.
+
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/simulation_four_statistics.png}
 \end{center}
-\caption{Histogram of Topple Size, Area, Loss, and L1 Length on log-log axes, for $L=5, 10, 20 ,100$. Data was generated from $100L^2$ random grain placements, with $4L^2$ burn-in. Black lines in the Area histogram (top-right) are at $L^2$ and represent the maximum possible toppling area obtainable from an $L\times L$ grid.}
+\caption{Observed frequencies of key avalanche statistics computed from the simulated sandpile Markov chain, excluding the discarded burn-in samples. A subset of four lattice sizes are depicted: 5, 10, 20, and 100, with varying colors. Values are computed from $10^6$ simulated observations. The dashed vertical lines on the top right correspond to the maximum possible avalanche area for each lattice size, $L^2$. Plots are shown in log-log axes. The appearance of horizontal lines is an artifact of the log-log axes. The lines correspond to sizes with only 1, 2, 3, etc. observations in the dataset, with exaggerated vertical distance between the lines because of the log scale.}
 \label{fig:simulation_statistics}
 \end{figure} 
+
+The plots in Figure \ref{fig:simulation_statistics} depect a linear trend in early values of avalanche size and avalanche area, suggesting a power law distribution followed by a sharp decay. The distributions for Loss and L1 Length do not appear to have this power law structure, and the remainder of this report focusses on understanding and analysing the distribution of avalanche size and area.
