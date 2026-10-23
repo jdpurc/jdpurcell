@@ -12,7 +12,8 @@
 \contentsline {section}{\numberline {3.2}Manually-truncated Power Law}{10}{section.3.2}%
 \contentsline {chapter}{\numberline {4}Finite Size Scaling Effect}{12}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Exponentially Truncated Power Law}{12}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Estimating MLE parameters for each $L$}{13}{subsection.4.1.1}%
-\contentsline {chapter}{\numberline {5}Conclusion}{16}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Reflection}{16}{section.5.1}%
-\contentsline {chapter}{Bibliography}{16}{section.5.1}%
+\contentsline {section}{\numberline {4.2}Pooled Exponentially Truncated Power Law}{15}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Stretched Exponentially Truncated Power Law}{15}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Conclusion}{19}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Reflection}{19}{section.5.1}%
+\contentsline {chapter}{Bibliography}{19}{section.5.1}%

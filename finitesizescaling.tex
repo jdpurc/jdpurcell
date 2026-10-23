@@ -31,48 +31,34 @@ The likelihood and log-likelihood are:
     \log \mathcal{L}(\mathbf{x}; \tau, c, x_{max}) &= -n \log C_{\tau, c, x_{max}} -\tau \sum_{i=1}^T \log x_i - \frac{1}{c}\sum_{i=1}^T x_i \\
 \end{align*}
 
-In the above, we model $f(u) = \exp(-u)$. We expect $c_a \propto L^D$ for some constant $D$ across all lattice sizes.
-The advantage of this structure is that the full (not truncated) dataset can be used to fit the powerlaw exponent $\tau_a$, with $c_a$ representing a soft cutoff boundary that is fit to the data, rather than a hard cutoff that is chosen arbitrarily.
-If the distribution obeys finite size scaling with this $f$, then we should expect to see a relatively constant $\tau_a$ across varying $L$, and we should observe a linear $\log(c_a)$ vs $\log(L)$ plot with constant slope $D_a$.
-In particular, we can estimate pooled MLEs from the full dataset across different values of $L$ according to 
-\[p(a; L, \tau_a, \gamma_a, D_a) = \frac{1}{C_{L, \tau_a, \gamma_a, D_a}} a^{-\tau_a} \exp\left( \frac{a}{\gamma_a L ^{D_a}} \right)\]
-
-Denote $\mathbf{a}_L$ the set of observations generated from the lattice of size $L$. Then likelihood and log-likelihood in the pooled case are:
-\begin{align*}
-    \mathcal{L}(\mathbf{a}_{L_1}, \cdots \mathbf{a}_{L_K}; \tau_a, \gamma_a, D_a) &= \prod_{j=1}^K \mathcal{L}(\mathbf{a}_{L_j}; \tau_a, c_a=\gamma_a L_j ^{D_a}, a_{max} = L^2)  \\
-\end{align*}
-
-
-We follow the below procedure:
-\begin{enumerate}
-    \item For each $L$, estimate MLE parameters $\hat{\tau}_a (L), \hat{c}_a (L)$.
-    \item Examine the MLE fit against the observed data
-    \item Pool the data and estimate MLE parameters $\tau_a, \hat{gamma}_a, \hat{D}_a$.
-    \item Examine the MLE fit of $\log \hat{\gamma}_a, \hat{D}_a$ against $\log \hat{c}_a (L)$ and $\log L$.
-\end{enumerate}
-
-\subsection{Estimating MLE parameters for each $L$}
 As before, for each $L$, we numerically optimise the log-likelihood function to obtain:
-\[\hat{\tau}_a(L), \hat{c}_a(L) = \argmin_{\tau_a, c_a}\left\{ -\log \mathcal{L}(\mathbf{a}_L; \tau_a, c_a, a_{max}=L^2) \right\}\]
+\[\hat{\tau}(L), \hat{c}(L) = \argmin_{\tau, c}\left\{ -\log \mathcal{L}(\mathbf{x}_L; \tau, c, x_{max}) \right\}\]
 
-\begin{figure}[htbp]
+LIke before, set $\tau = \tau_s(L), x_{max} = s_{max}(L), c = c_s(L)$ for modelling the avalanche size, and $\tau = \tau_a(L), x_{max} = a_{max}(L), c = c_a(L)$ for modelling the avalanche area.
+Recall we fix $a_{max}(L) = L^2$ and $s_{max}(L) = L^3$ as known.
+
+The results in Table \ref{tab:powerlaw_exp_taus} are promising: for lattice sizes 40 and above, the powerlaw coefficient $\tau \approx 1$.
+Further, in Figure \ref{fig:powerlaw_exp_taus} the log soft cutoffs $\log \hat{c}$ appear to scale linearly in $\log L$, a relationship that we will examine in more detail when computing the pooled estimators.
+
+
+\begin{figure}
     \centering
 
     % Left: Figure
-    \begin{minipage}[c]{0.48\textwidth}
+    \begin{minipage}[c]{0.6\textwidth}
         \centering
         \includegraphics[width=\linewidth]{figures/powerlaw_exp_taus_taua_plot.png}
-        \captionof{figure}{Estimates MLEs for $\tau_s, \tau_a$ for varying lattice sizes $L$.}
+        \captionof{figure}{Estimates MLEs $\hat{\tau}_s(L), \hat{\tau}_a(L)$ (left) and $\hat{c}_s(L), \hat{c}_a(L)$ (right) for varying lattice sizes $L$.}
         \label{fig:powerlaw_exp_taus}
     \end{minipage}
     \hfill
     % Right: Table
-    \begin{minipage}[c]{0.48\textwidth}
+    \begin{minipage}[c]{0.38\textwidth}
         \centering
         
         \begin{tabular}{|l|l|l|l|l|}
         \hline
-        $L$ & $\tau_s$ & $c_s$ & $\tau_a$ & $c_a$ \\
+        $L$ & $\hat{\tau}_s(L)$ & $\hat{c}_s(L)$ & $\hat{\tau}_a(L)$ & $\hat{c}_a(L)$ \\
         \hline
             5 &  0.38 &  5.69 &  0.44 &  6.27 \\
             10 &  0.68 &  27.49 &  0.67 &  26.58 \\
@@ -92,14 +78,115 @@ As before, for each $L$, we numerically optimise the log-likelihood function to 
 
 \end{figure}
 
-The results in Table \ref{tab:powerlaw_exp_taus} are promising: for lattice sizes 40 and above, the powerlaw coefficient $\tau \approx 1$.
-Further, the soft cutoffs $c$ appear to scale appropriately with $L$, a relationship that we will examine in more detail when computing the pooled estimators.
-
-
-\begin{figure}[!htbp]
+\begin{figure}
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/powerlaw_exp_mle_viz.png}
 \end{center}
-\caption{Fitted MLEs for the exponentially-truncated power law distribution against the observed data.}
+\caption{Fitted MLEs for the unpooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
 \label{fig:powerlaw_exp_fitted_mle}
+\end{figure} 
+
+\section{Pooled Exponentially Truncated Power Law}
+
+Consider again the Finite Size Scaling hypothesis:
+\[p(X=x; \tau, L, f, D) \propto x^{-\tau} f\left(\frac{x}{L^D}\right)\]
+
+In the previous section, we modelled 
+\[p(X=x; \tau, L, c, D) \propto x^{-\tau} \exp\left(-\frac{x}{c}\right)\]
+
+Therefore, if the chosen pmf is adequate to model the behaviour of the system, and the statistics obey finite size scaling, then we should observe a constant powerlaw coefficient $\tau_s = \tau_s(L)$ and $\tau_a = \tau_a(L)$, as well as the relationship $c_s(L) = k_s L^D_s$ and $c_a(L) = k_a L ^D_a$ for some constants $k_s, k_a, D_s, D_a$. 
+
+To assess whether this is plausible, consider the pooled likelihood. Let $\mathbf{L} = (L_1, L_2, \cdots, L_K)$ be the set of lattice sizes simulated, and let $\mathbf{x}^j = (x_1^j, \cdots, x_n^j)$ be the set of simulated statistics from lattice size $L_j$.
+
+\[\mathcal{L}(\mathbf{x}_{1}, \cdots \mathbf{x}_{K}; \mathbf{L}, \tau, k, D) = \prod_{j=1}^K \mathcal{L}(\mathbf{x}_{j}; \tau, c=k L_j ^{D}, x_{max} = x_{max}(L_j)) \]
+
+
+The full dataset can be used to fit $\tau, k$, and $ D$ using maximum likelihood, and the fit can be compared against the individual fits. If the pmf is well-specified and the system obeys finite size scaling, the fits should not significantly degrade, and we should observe that $\log \hat{c} = \log \hat{k} + \hat{D} \log L$. In other words, the pooled fit should accurately compute the trendline on the graph of $\log \hat{c}$ vs $\log L$. While the estimates in Table \ref{tab:pooled_powerlaw_MLEs} appear reasonable, the results in Figure \ref{fig:pooled_unpooled_exp_comparison} show that the pooled parameters do not fully capture the behaviour of the pmf. In particular, $\hat{\tau}$ does not appear to be constant for either avalanche size nor area, and the fitted line on the graph of $\log \hat{c}$ vs $\log L$ is not a great fit. This suggests the estimates of $\hat{k}$ and $\hat{D}$ are smoothing over the excess error introduced by assuming a constant $\hat{\tau}$. 
+
+
+\begin{figure}
+    \centering
+
+    % Left: Figure
+    \begin{minipage}[c]{0.6\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png}
+        \captionof{figure}{A comparison of the unpooled estimates of the parameters (points) with the pooled parameter estimates (dashed lines). If the pmf form and the finite size scaling hypothesis are appropriate, we expect the dashed line to approximate the trend of the points. Based on the above, the model is not quite appropriate, and we need to consider an additional model for the pmf.}
+        \label{fig:pooled_unpooled_exp_comparison}
+    \end{minipage}
+    \hfill
+    % Right: Table
+    \begin{minipage}[c]{0.38\textwidth}
+        \centering
+        \begin{tabular}{|l|l|l|l|}
+        \hline
+         & $\hat{\tau}$ & $\hat{k}$ & $\hat{D}$ \\
+        \hline
+            Size $s$ &  0.97 &  0.38 &  2.11 \\
+            Area $a$ & 0.95 &  0.74 &  1.86 \\
+        \hline
+        \end{tabular}
+        \captionof{table}{Pooled MLE coefficients for finite size scaling assuming the exponentially truncated power law distribution. We expect $\hat{D} \approx 2$ and $\hat{\tau} \approx 1$ for both avalanche area and size, so the results seem reasonable.}
+        \label{tab:pooled_powerlaw_MLEs}
+    \end{minipage}
+
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.80\linewidth]{figures/pooled_exp_MLE_fit.png}
+\end{center}
+\caption{Fitted MLEs for the pooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
+\label{fig:powerlaw_exp_fitted_mle}
+\end{figure} 
+
+
+\section{Stretched Exponentially Truncated Power Law}
+
+We extend the exponentially truncated power law studied above to allow more flexibility in the tails. We consider both the unpooled and pooled models.
+
+The pmf is:
+\begin{align*}
+    p(X=x; \tau, c, \beta, x_{max}) &= \frac{1}{C_{\tau, c, \beta, x_{max}}} x^{-\tau} \exp\left( -\left(\frac{x}{c}\right)^\beta \right) \\
+    \intertext{Where $C_{\tau, c, \beta, x_{max}}$ is the normalising constant:}
+    C_{\tau, c, x_{max}} &= \sum_{k=1}^{x_{max}} k^{-\tau} \exp\left( -\left(k / c\right)^\beta \right) \\
+\end{align*}
+
+The shape of the pmf under varying parameter values can be observed in Figure \ref{fig:stretched_powerlaw_params}. Of particular interest is that $\beta$ can impose a rapid transition from linearity to decay in the log-log plot.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\linewidth]{figures/stretched_params.png}
+\end{center}
+\caption{Visualisation of the stretched exponentially truncated power law probability mass function on log-log axes under different parameter combinations. Each point represents a discrete value and corresponding probability mass, with a line connecting sequential points for illustration purposes. The left three plots are identical to Figure \ref{fig:exp_powerlaw_params} as they keep $\beta = 1$. The right plot shows the effect of increasing $\beta$ while keeping $\tau$, $x_{max}$, and $c$ constant, which results in steeper decay.The orange line is identical in all plots, corresponding to parameters $\tau = 0.5$, $x_{max} = 100$, $c = 200$, and $\beta = 1$.}
+\label{fig:stretched_powerlaw_params}
+\end{figure} 
+
+
+The unpooled likelihood and log-likelihood are:
+\begin{align*}
+    \mathcal{L}(\mathbf{x}; \tau, c, x_{max}, \beta) &= \prod_{i=1}^n \frac{1}{C_{\tau, c, \beta, x_{max}}} x_i^{-\tau} \exp\left( -\left(\frac{x_i}{c}\right)^\beta \right) \\
+    \log \mathcal{L}(\mathbf{x}; \tau, c, \beta, x_{max}) &= -n \log C_{\tau, c, \beta, x_{max}} -\tau \sum_{i=1}^T \log x_i - \frac{1}{c^\beta}\sum_{i=1}^T x_i^\beta \\
+\end{align*}
+
+As before, we can extend this model under the finite size scaling hypothesis to be of the form
+\[p(X=x; \tau, L, k, D, \beta) \propto x^{-\tau} \exp\left(-\left(\frac{x}{kL^D}\right)^\beta\right)\]
+
+And we assume $\tau_s = \tau_s(L)$, $\tau_a = \tau_a(L)$, $\beta_s = \beta_s(L)$, $\beta_a = \beta_a(L)$ as well as the relationship $c_s(L) = k_s L^D_s$ and $c_a(L) = k_a L ^D_a$ for some constants $k_s, k_a, D_s, D_a$. 
+
+The pooled likelihood is:
+\[\mathcal{L}(\mathbf{x}_{1}, \cdots \mathbf{x}_{K}; \mathbf{L}, \tau, k, D, \beta) = \prod_{j=1}^K \mathcal{L}(\mathbf{x}_{j}; \tau, c=k L_j ^{D}, \beta x_{max} = x_{max}(L_j)) \]
+
+For brevity we omit the table of parameters for the unpooled fits, but they can be found in Appendix Table \ref{}.
+
+The unpooled fits in Figure \ref{fig:stretched_unpooled_fit} appear to model the pmfs very closely, capturing the strong decay associated with small $L$ and the area hard cutoff $L^2$.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.80\linewidth]{figures/stretched_unpooled_fit.png}
+\end{center}
+\caption{Fitted MLEs for the unpooled stretched exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$. The additional flexibility of the stretching parameter is able to capture the tail behaviour of the pmfs.}
+\label{fig:stretched_unpooled_fit}
 \end{figure} 
