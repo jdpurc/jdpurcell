@@ -1,27 +1,34 @@
 \chapter{Finite Size Scaling Effect}
-\begin{enumerate}
-    \item General form
-    \item MLE fit for exponentially-truncated power law
-    \item MLE fit for generalised exp-truncated power law
-    \item Discussion
-\end{enumerate}
 
-The finite size scaling law hypothesizes that the tail behaviour relates to the finite lattice size $L$ via:
-\[p(A=a; \tau_a, L, f, D) \propto a^{-\tau_a} f\left(\frac{a}{L^D}\right)\]
+Recalling Section \ref{sec:stats}, the finite size scaling law hypothesizes that the tail behaviour relates to the finite lattice size $L$ via a probability mass function of the form:
+\[p(X=x; \tau, L, f, D) \propto x^{-\tau} f\left(\frac{x}{L^D}\right)\]
 Here $f$ governs the tail behaviour of the distribution, i.e. for small values of $u$, $f(u) \approx 1$ and the distribution resembles a power law.
 
 \section{Exponentially Truncated Power Law}
-We first consider the exponentially-truncated power law with $a_{max} = L^2$ as the natural cutoff. Again, we impose $s_{max}=2L^2$ for computational convenience.
+We first consider the exponentially-truncated power law:
 \begin{align*}
-    p(A=a; \tau_a, c_a, a_{max}) &= \frac{1}{C_{\tau_a, c_a, a_{max}}} a^{-\tau_a} \exp\left( \frac{-a}{c_a} \right) \\
-    \intertext{Where $C_{\tau_a, c_a, a_{max}}$ is the normalising constant:}
-    C_{\tau_a, c_a, a_{max}} &= \sum_{k=1}^{a_{max}} k^{-\tau_a} \exp\left( -k / c_a \right) \\
+    p(X=x; \tau, c, x_{max}) &= \frac{1}{C_{\tau, c, x_{max}}} x^{-\tau} \exp\left( \frac{-x}{c} \right) \\
+    \intertext{Where $C_{\tau, c, x_{max}}$ is the normalising constant:}
+    C_{\tau, c, x_{max}} &= \sum_{k=1}^{x_{max}} k^{-\tau} \exp\left( -k / c \right) \\
 \end{align*}
+
+In the above pmf, $\tau$ and $x_{max}$ are, as before, the power law scaling coefficient and the support upper bound respectively, while the new parameter $c$ controls the location of the soft cutoff, where power law behaviour decays.
+
+The shape of the pmf under varying parameter values can be observed in Figure \ref{fig:exp_powerlaw_params}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.80\linewidth]{figures/exp_powerlaw_params.png}
+\end{center}
+\caption{Visualisation of the exponentially truncated power law probability mass function on log-log axes under different parameter combinations. Each point represents a discrete value and corresponding probability mass, with a line connecting sequential points for illustration purposes. The left plot shows the effect of varying $\tau$ while keeping $x_{max}$ and $c$ constant, which results in changes to the slope of the linear part of the connecting line. The central plot shows the effect of varying $x_{max}$ while keeping $\tau$ and $c$ constant, which results in vertical translation of the connecting curve, with different support for $x$. The right plot shows the effect of increasing $c$ while keeping $\tau$ and $x_{max}$ constant, which results in later decay.The orange line is identical in all plots, corresponding to parameters $\tau = 0.5$, $x_{max} = 100$, and $c = 200$.}
+\label{fig:exp_powerlaw_params}
+\end{figure} 
 
 The likelihood and log-likelihood are:
 \begin{align*}
-    \mathcal{L}(\mathbf{a}; \tau_a, c_a, a_{max}) &= \prod_{i=1}^T \frac{1}{C_{\tau_a, c_a, a_{max}}} a_i^{-\tau_a} \exp\left( \frac{-a_i}{c_a} \right) \\
-    \log \mathcal{L}(\mathbf{a}; \tau_a, c_a, a_{max}) &= -T \log C_{\tau_a, c_a, a_{max}} -\tau_a \sum_{i=1}^T \log a_i - \frac{1}{c_a}\sum_{i=1}^T a_i \\
+    \mathcal{L}(\mathbf{x}; \tau, c, x_{max}) &= \prod_{i=1}^n \frac{1}{C_{\tau, c, x_{max}}} x_i^{-\tau} \exp\left( \frac{-x_i}{c} \right) \\
+    \log \mathcal{L}(\mathbf{x}; \tau, c, x_{max}) &= -n \log C_{\tau, c, x_{max}} -\tau \sum_{i=1}^T \log x_i - \frac{1}{c}\sum_{i=1}^T x_i \\
 \end{align*}
 
 In the above, we model $f(u) = \exp(-u)$. We expect $c_a \propto L^D$ for some constant $D$ across all lattice sizes.

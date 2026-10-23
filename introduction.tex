@@ -44,7 +44,7 @@ Note that we allow open boundary conditions in this study. When a toppling is in
 The avalanche (stabilising) function $\xi: \Psi_{G_L} \to \Omega_{G_L}$ maps $\eta = \eta^{(0)} \mapsto \eta^{(s)}$ where $\eta^{(s)}$ is the stable sandpile output by the following algorithm:
 
 \needspace{8\baselineskip}
-\underline{\textbf{Algorithm: Toppling Function}} \\
+\underline{\textbf{Algorithm: Avalanche Function}} \\
 $i \gets 0$ \\
 \textbf{while} $U_{\eta^{(i)}} \neq \emptyset$ \textbf{do}:\\
 choose $\mathbf{x}^{(i+1)} \in U_{\eta^{(i)}}$ \\
@@ -53,15 +53,25 @@ $i \gets i + 1$ \\
 \textbf{end while} \\
 \textbf{return} $\eta^{(i)} = \eta^{(s)}$
 
+When $\eta^{(s)} \neq \eta$, we say that an avalanche has occurred.
+
 Avalanches can be described by a range of properties: 
 \begin{enumerate}
     \item The avalanche (toppling) size is the final index $s(\eta) = s$
     \item The avalanche (toppling) area $a(\eta)$ is the size of the set $\{\mathbf{x}^{(i)}: i\in \{1, \cdots, s\}\}$
     \item The loss is $\ell(\eta) := \sum_{i=1}^{s} \ell(\eta^{(i-1)}, \mathbf{x}^{(i)})$
-    \item The $L_1$ length is $d(\eta) := \max_{i\in\{1, \cdots, s\}}\norm{\mathbf{x}^{(1)} - \mathbf{x}^{(i)}}_1$, with $d(\eta) := 0$ if $s=0$.
+    \item The $L_1$ length is $d(\eta) := \max_{i\in\{1, \cdots, s\}}\norm{\mathbf{x}^{(1)} - \mathbf{x}^{(i)}}_1$.
 \end{enumerate} 
 
-Note the constraints $0 \leq a(\eta) \leq s(\eta)$, $a(\eta) \leq L^2$, $d(\eta) \leq 2L$. 
+When an avalanche occurs, note the following constraints: 
+\begin{enumerate}
+    \item $0 < a(\eta) \leq s(\eta)$
+    \item $a(\eta) \leq L^2$
+    \item $0\leq \ell(\eta) \leq \sum_{\mathbf{x} \in V_L}\eta(\mathbf{x})$
+    \item $0 \leq d(\eta) \leq 2L$
+\end{enumerate}
+
+When no avalanche occurs, we define $s(\eta) = a(\eta) = \ell(\eta) = d(\eta) = 0$ for convenience. However, our focus in this project is on the distribution of these statistics conditional on the occurrence of an avalanche.
 
 A proof that $\xi$ is well-defined and independent of the choice of $\mathbf{x}^{(j)}$ in the loop can be found in Járai, 2018 \cite{jaraisandpilenotes}. The abelian nature of the topplings were first shown by Dhar in 1990 \cite{dhar1990self}.
 
@@ -106,6 +116,6 @@ Consequently, the sequence of avalanche sizes $\{S_j\}_{j\geq 1}$ and the other 
 \label{fig:toy_deposition}
 \end{figure} 
 
-\section{Statistical Models}
+\section{Statistical Models} \label{sec:stats}
 
 Describe modelling choices for power law and truncated power law distributions
