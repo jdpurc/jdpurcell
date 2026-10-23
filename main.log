@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  23 OCT 2026 16:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  23 OCT 2026 17:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -508,6 +508,12 @@ LaTeX Warning: Unused global option(s):
 
 LaTeX Warning: Label `fig:powerlaw_exp_fitted_mle' multiply defined.
 
+
+LaTeX Warning: Label `fig:pooled_unpooled_exp_comparison' multiply defined.
+
+
+LaTeX Warning: Label `tab:pooled_powerlaw_MLEs' multiply defined.
+
 )
 \openout1 = `main.aux'.
 
@@ -764,20 +770,20 @@ File: figures/powerlaw_exp_taus_taua_plot.png Graphic file (type png)
 Package pdftex.def Info: figures/powerlaw_exp_taus_taua_plot.png  used on input line 50.
 (pdftex.def)             Requested size: 290.22107pt x 171.11922pt.
 
-Overfull \hbox (11.17049pt too wide) in paragraph at lines 59--75
+Overfull \hbox (11.17049pt too wide) in paragraph at lines 58--74
  [][] 
  []
 
 <figures/powerlaw_exp_mle_viz.png, id=245, 628.0263pt x 654.0435pt>
 File: figures/powerlaw_exp_mle_viz.png Graphic file (type png)
 <use figures/powerlaw_exp_mle_viz.png>
-Package pdftex.def Info: figures/powerlaw_exp_mle_viz.png  used on input line 83.
+Package pdftex.def Info: figures/powerlaw_exp_mle_viz.png  used on input line 82.
 (pdftex.def)             Requested size: 386.95897pt x 402.99782pt.
 
-LaTeX Warning: Reference `' on page 12 undefined on input line 85.
+LaTeX Warning: Reference `' on page 12 undefined on input line 84.
 
 
-LaTeX Warning: Reference `' on page 12 undefined on input line 85.
+LaTeX Warning: Reference `' on page 12 undefined on input line 84.
 
 
 
@@ -791,58 +797,127 @@ LaTeX Warning: Reference `' on page 12 undefined on input line 85.
 <figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png, id=267, 628.749pt x 361.35pt>
 File: figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png Graphic file (type png)
 <use figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png>
-Package pdftex.def Info: figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png  used on input line 113.
+Package pdftex.def Info: figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png  used on input line 112.
 (pdftex.def)             Requested size: 290.22107pt x 166.79645pt.
 <figures/pooled_exp_MLE_fit.png, id=268, 677.8926pt x 654.0435pt>
 File: figures/pooled_exp_MLE_fit.png Graphic file (type png)
 <use figures/pooled_exp_MLE_fit.png>
-Package pdftex.def Info: figures/pooled_exp_MLE_fit.png  used on input line 138.
+Package pdftex.def Info: figures/pooled_exp_MLE_fit.png  used on input line 137.
 (pdftex.def)             Requested size: 386.95897pt x 373.34758pt.
 
 
-LaTeX Warning: Reference `' on page 15 undefined on input line 140.
+LaTeX Warning: Reference `' on page 15 undefined on input line 139.
 
 
-LaTeX Warning: Reference `' on page 15 undefined on input line 140.
+LaTeX Warning: Reference `' on page 15 undefined on input line 139.
 
 
 
 [15 <./figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png>]
 
 [16 <./figures/pooled_exp_MLE_fit.png>]
-<figures/stretched_params.png, id=282, 1197.5139pt x 361.35pt>
+<figures/stretched_params.png, id=283, 1197.5139pt x 361.35pt>
 File: figures/stretched_params.png Graphic file (type png)
 <use figures/stretched_params.png>
-Package pdftex.def Info: figures/stretched_params.png  used on input line 161.
+Package pdftex.def Info: figures/stretched_params.png  used on input line 160.
 (pdftex.def)             Requested size: 483.69687pt x 145.95447pt.
-
-
-LaTeX Warning: Reference `' on page 17 undefined on input line 182.
-
-<figures/stretched_unpooled_fit.png, id=286, 698.1282pt x 654.0435pt>
+<figures/stretched_unpooled_fit.png, id=287, 698.1282pt x 654.0435pt>
 File: figures/stretched_unpooled_fit.png Graphic file (type png)
 <use figures/stretched_unpooled_fit.png>
-Package pdftex.def Info: figures/stretched_unpooled_fit.png  used on input line 188.
+Package pdftex.def Info: figures/stretched_unpooled_fit.png  used on input line 207.
 (pdftex.def)             Requested size: 386.95897pt x 362.51941pt.
 
-LaTeX Warning: Reference `' on page 17 undefined on input line 190.
+
+LaTeX Warning: Reference `' on page 17 undefined on input line 209.
 
 
-LaTeX Warning: Reference `' on page 17 undefined on input line 190.
+LaTeX Warning: Reference `' on page 17 undefined on input line 209.
 
-) (./conclusion.tex
+
+LaTeX Warning: Reference `' on page 17 undefined on input line 213.
+
+
 
 [17 <./figures/stretched_params.png>]
 
 [18 <./figures/stretched_unpooled_fit.png>]
- 5.
-) (./main.bbl
 
-[19
+LaTeX Warning: Citation `' on page 19 undefined on input line 217.
+
+<figures/pooled_stretched_MLE_comparison.png, id=302, 893.2572pt x 361.35pt>
+File: figures/pooled_stretched_MLE_comparison.png Graphic file (type png)
+<use figures/pooled_stretched_MLE_comparison.png>
+Package pdftex.def Info: figures/pooled_stretched_MLE_comparison.png  used on input line 225.
+(pdftex.def)             Requested size: 338.58632pt x 136.96706pt.
+
+Overfull \hbox (27.5572pt too wide) in paragraph at lines 233--241
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 241--241
+[][]|\OT1/cmr/m/n/9 Pooled MLE co-ef-fi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 scal-ing as-sum-ing
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 the stretched ex-po-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 nen-tially trun-cated
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 power law dis-tri-
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 for both avalanche
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 area and size, so
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
+\OT1/cmr/m/n/9 the re-sults seem
+ []
+
+<figures/pooled_stretched_fit.png, id=303, 741.4902pt x 654.0435pt>
+File: figures/pooled_stretched_fit.png Graphic file (type png)
+<use figures/pooled_stretched_fit.png>
+Package pdftex.def Info: figures/pooled_stretched_fit.png  used on input line 249.
+(pdftex.def)             Requested size: 386.95897pt x 341.3321pt.
+
+LaTeX Warning: Reference `' on page 19 undefined on input line 251.
+
+
+LaTeX Warning: Reference `' on page 19 undefined on input line 251.
+
+) (./conclusion.tex
+
+[19 <./figures/pooled_stretched_MLE_comparison.png>]
+
+[20 <./figures/pooled_stretched_fit.png>]
+ 5.
+) (./appendix1.tex) (./main.bbl
+
+[21
 
 ])
 
-[20
+[22
 
 ] (./main.aux (./cover.aux))
  ***********
@@ -860,18 +935,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 2770AD3978063C2489C036A9C237063E;2941.
  ) 
 Here is how much of TeX's memory you used:
- 16226 strings out of 469686
- 262952 string characters out of 5474328
+ 16257 strings out of 469686
+ 263889 string characters out of 5474328
  750024 words of memory out of 5000000
- 44315 multiletter control sequences out of 15000+600000
+ 44338 multiletter control sequences out of 15000+600000
  641016 words of font info for 88 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  79i,13n,84p,1175b,509s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (21 pages, 1267309 bytes).
+Output written on main.pdf (23 pages, 1429261 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 322 compressed objects within 4 object streams
- 71 named destinations out of 1000 (max. 500000)
- 233 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 451 PDF objects out of 1000 (max. 8388607)
+ 334 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 243 words of extra memory for PDF output out of 10000 (max. 10000000)
 

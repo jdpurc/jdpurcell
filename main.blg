@@ -4,6 +4,7 @@ The top-level auxiliary file: main.aux
 A level-1 auxiliary file: cover.aux
 The style file: abbrv.bst
 Database file #1: biblio.bib
+Warning--I didn't find a database entry for ""
 You've used 6 entries,
             2118 wiz_defined-function locations,
             545 strings with 4590 characters,
@@ -45,3 +46,4 @@ warning$ -- 0
 while$ -- 23
 width$ -- 7
 write$ -- 71
+(There was 1 warning)
