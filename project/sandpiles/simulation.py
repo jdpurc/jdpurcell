@@ -1,9 +1,17 @@
 import numpy as np
 from numba import njit
 
+#--------
 # Run the abelian sandpiles simulation
-# Compile the code in nopython mode for significant computational speedup
+#
+# Compile the code in numba nopython just in time mode (@njit) for significant computational speedup
 # see https://numba.readthedocs.io/en/stable/index.html
+#
+# The sandpile model was first introduced by Bak et al. in 1987:
+# Bak, P., Tang, C., & Wiesenfeld, K. (1987). Self-organized criticality: An explanation of the 1/f noise. 
+# Physical review letters, 59(4), 381.
+#--------
+
 @njit
 def simulate_sandpiles(
         shape: tuple[int, int],                     # finite grid size
