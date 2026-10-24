@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  24 OCT 2026 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.30)  24 OCT 2026 18:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -504,11 +504,7 @@ File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [10.5pt].
 
-(./main.aux (./cover.aux)
-
-LaTeX Warning: Label `tab:pooled_powerlaw_MLEs' multiply defined.
-
-)
+(./main.aux (./cover.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -798,12 +794,12 @@ Package pdftex.def Info: figures/pooled_exp_MLE_fit.png  used on input line 138.
 [16 <./figures/pooled_umpooled_exp_powerlaw_MLE_comparison.png>]
 
 [17 <./figures/pooled_exp_MLE_fit.png>]
-<figures/stretched_params.png, id=309, 1197.5139pt x 361.35pt>
+<figures/stretched_params.png, id=308, 1197.5139pt x 361.35pt>
 File: figures/stretched_params.png Graphic file (type png)
 <use figures/stretched_params.png>
 Package pdftex.def Info: figures/stretched_params.png  used on input line 161.
 (pdftex.def)             Requested size: 483.69687pt x 145.95447pt.
-<figures/stretched_unpooled_fit.png, id=313, 899.0388pt x 654.0435pt>
+<figures/stretched_unpooled_fit.png, id=312, 899.0388pt x 654.0435pt>
 File: figures/stretched_unpooled_fit.png Graphic file (type png)
 <use figures/stretched_unpooled_fit.png>
 Package pdftex.def Info: figures/stretched_unpooled_fit.png  used on input line 208.
@@ -819,51 +815,26 @@ LaTeX Warning: Citation `' on page 20 undefined on input line 218.
 <figures/pooled_stretched_MLE_comparison.png, id=334, 893.2572pt x 361.35pt>
 File: figures/pooled_stretched_MLE_comparison.png Graphic file (type png)
 <use figures/pooled_stretched_MLE_comparison.png>
-Package pdftex.def Info: figures/pooled_stretched_MLE_comparison.png  used on input line 226.
-(pdftex.def)             Requested size: 338.58632pt x 136.96706pt.
+Package pdftex.def Info: figures/pooled_stretched_MLE_comparison.png  used on input line 246.
+(pdftex.def)             Requested size: 362.77264pt x 146.74844pt.
 
-Overfull \hbox (51.93459pt too wide) in paragraph at lines 234--243
+Overfull \hbox (3.56195pt too wide) in paragraph at lines 246--246
  [][] 
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 243--243
-[][]|\OT1/cmr/m/n/9 Pooled MLE co-ef-fi-
+Underfull \hbox (badness 10000) in paragraph at lines 246--246
+[][]|\OT1/cmr/m/n/9 Pooled MLE co-ef-fi-cients for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 scal-ing as-sum-ing
+Underfull \hbox (badness 10000) in paragraph at lines 246--246
+\OT1/cmr/m/n/9 stretched ex-po-nen-tially trun-
  []
 
 
-Underfull \hbox (badness 1264) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 the stretched ex-po-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 nen-tially trun-cated
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 power law dis-tri-
- []
-
-
-Underfull \hbox (badness 3758) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 for both avalanche
- []
-
-
-Underfull \hbox (badness 5189) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 area and size, so
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
-\OT1/cmr/m/n/9 the re-sults seem
+Underfull \hbox (badness 3547) in paragraph at lines 246--246
+\OT1/cmr/m/n/9 cated power law dis-tri-bu-tion.
  []
 
 <figures/pooled_stretched_fit.png, id=335, 899.0388pt x 654.0435pt>
@@ -942,22 +913,19 @@ L3 programming layer <2025-09-02>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5BE1BB3D11896D2C4B578719D42D13EB;3161.
  ) 
 Here is how much of TeX's memory you used:
- 16326 strings out of 469686
- 266582 string characters out of 5474328
+ 16327 strings out of 469686
+ 266618 string characters out of 5474328
  752024 words of memory out of 5000000
- 44390 multiletter control sequences out of 15000+600000
+ 44391 multiletter control sequences out of 15000+600000
  641183 words of font info for 89 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  79i,14n,84p,1175b,524s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb><c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (31 pages, 4168291 bytes).
+Output written on main.pdf (31 pages, 4168264 bytes).
 PDF statistics:
  545 PDF objects out of 1000 (max. 8388607)
  394 compressed objects within 4 object streams

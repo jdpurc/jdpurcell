@@ -219,9 +219,9 @@ This is consistent with previous work \cite{}, which found that while avalanche 
 
 \begin{figure}
     \centering
-
+    \makebox[\textwidth][c]{
     % Left: Figure
-    \begin{minipage}[c]{0.7\textwidth}
+    \begin{minipage}[c]{0.75\textwidth}
         \centering
         \includegraphics[width=\linewidth]{figures/pooled_stretched_MLE_comparison.png}
         \captionof{figure}{A comparison of the unpooled estimates of the parameters (points) with the pooled parameter estimates (dashed lines). If the pmf form and the finite size scaling hypothesis are appropriate, we expect the dashed line to approximate the trend of the points. Based on the above, the pooled model for avalanche area is reasonable, while evidence suggests avalanche size may have an $L-$dependent stretching parameter $\beta_s$.}
@@ -229,7 +229,7 @@ This is consistent with previous work \cite{}, which found that while avalanche 
     \end{minipage}
     \hfill
     % Right: Table
-    \begin{minipage}[c]{0.28\textwidth}
+    \begin{minipage}[c]{0.38\textwidth}
         \centering
         \begin{tabular}{|l|l|l|l|l|}
         \hline
@@ -241,9 +241,9 @@ This is consistent with previous work \cite{}, which found that while avalanche 
         \hline
         \end{tabular}
         \captionof{table}{Pooled MLE coefficients for finite size scaling assuming the stretched exponentially truncated power law distribution. We expect $\hat{D} \approx 2$ and $\hat{\tau} \approx 1$ for both avalanche area and size, so the results seem reasonable.}
-        \label{tab:pooled_powerlaw_MLEs}
+        \label{tab:pooled_stretched_powerlaw_MLEs}
     \end{minipage}
-
+    }
 \end{figure}
 
 \begin{figure}

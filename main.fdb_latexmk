@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1792823778.2946 "main.aux" "main.bbl" "main" 1792823801.57466 0
+["bibtex main"] 1792825927.10993 "main.aux" "main.bbl" "main" 1792826061.69386 0
   "./biblio.bib" 1792645671 5353 521148fd68b1647376572e7c5d6b27d7 ""
   "c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/bibtex/bst/base/abbrv.bst" 1756724609 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "cover.aux" 1792823782 992 034da1f7f2d23e225e65570351f51590 "pdflatex"
-  "main.aux" 1792823800 29398 f054b947c98b4afc327dd23cc73d93f7 "pdflatex"
+  "cover.aux" 1792826033 992 034da1f7f2d23e225e65570351f51590 "pdflatex"
+  "main.aux" 1792826058 29408 393587932ee8e0b1e680f41a3f0aead2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1792823778.84592 "c:/Users/purce/OneDrive/Documents/1- Graduate Studies/COMP90072 The Art of Scientific Computation/report/jdpurcell/main.tex" "main.pdf" "main" 1792823801.58164 0
+["pdflatex"] 1792826028.36489 "c:/Users/purce/OneDrive/Documents/1- Graduate Studies/COMP90072 The Art of Scientific Computation/report/jdpurcell/main.tex" "main.pdf" "main" 1792826061.70218 0
   "appendix1.tex" 1792816981 2005 324afd462868373f029e49f67644e7a9 ""
   "c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1756724616 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1756724616 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -167,7 +167,7 @@
   "c:/Users/purce/AppData/Roaming/TinyTeX/texmf.cnf" 1756724667 956 f6319605e496eb760fffc62781398a4a ""
   "c:/Users/purce/OneDrive/Documents/1- Graduate Studies/COMP90072 The Art of Scientific Computation/report/jdpurcell/main.tex" 1792736978 909 25b8711175af9e3cb9984802e636c665 ""
   "conclusion.tex" 1792627068 166 23f9679d6bc70e72180d2126a5d73335 ""
-  "cover.aux" 1792823782 992 034da1f7f2d23e225e65570351f51590 "pdflatex"
+  "cover.aux" 1792826033 992 034da1f7f2d23e225e65570351f51590 "pdflatex"
   "cover.tex" 1791414657 1069 a6b9e5a5d5d8a7f8bdf20aef5ce0677f ""
   "figures/APPENDIX_exp_powerlaw_mle_viz.png" 1792818728 516115 fafa07fefe970f6fb72de78104bca61d ""
   "figures/APPENDIX_pooled_exp_powerlaw_mle_viz.png" 1792819860 517541 aef7368ba16e668f3acd4e6cc01a7e7e ""
@@ -193,13 +193,13 @@
   "figures/toy_deposition.png" 1792665109 17193 e0d5ab6b14b73ba65f3c9b754b63d6f4 ""
   "figures/toy_sandpiles.png" 1792663728 22610 941732030a0b68940fcf0c57248a3f8c ""
   "figures/uom_banner.pdf" 1785909693 39622 9739bcd37b5d485fa8a21c6a545e994a ""
-  "finitesizescaling.tex" 1792823800 19152 f2b36c97fcb7b37bdc9a5c9e8844fdc6 ""
+  "finitesizescaling.tex" 1792826024 19196 b56d6b7f4754ebbc0fa54f69d8387484 ""
   "introduction.tex" 1792714413 7796 b59f538a51831b79ff3e5f81e5f2a33d ""
-  "main.aux" 1792823800 29398 f054b947c98b4afc327dd23cc73d93f7 "pdflatex"
-  "main.bbl" 1792823778 1217 7422abeabe367806564c50fd831535bf "bibtex main"
-  "main.out" 1792823800 3161 5be1bb3d11896d2c4b578719d42d13eb "pdflatex"
+  "main.aux" 1792826058 29408 393587932ee8e0b1e680f41a3f0aead2 "pdflatex"
+  "main.bbl" 1792825927 1217 7422abeabe367806564c50fd831535bf "bibtex main"
+  "main.out" 1792826058 3161 5be1bb3d11896d2c4b578719d42d13eb "pdflatex"
   "main.tex" 1792736978 909 25b8711175af9e3cb9984802e636c665 ""
-  "main.toc" 1792823800 1585 90a24d8d36e9cb3b6057c6b609066540 "pdflatex"
+  "main.toc" 1792826058 1585 90a24d8d36e9cb3b6057c6b609066540 "pdflatex"
   "powerlaw.tex" 1792816394 9905 82c188882b0b44bd3c3a68efb2bd72a2 ""
   "preamble.tex" 1792664086 5462 405173c806929a499a6eca5be7575729 ""
   "simulation.tex" 1792810273 5018 a30169fd42c87d07ca8b00aa223713f2 ""

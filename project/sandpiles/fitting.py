@@ -37,6 +37,6 @@ def compute_MLE(
     )
     
     # test for convergence
-    assert(optim.success, optim.message)
+    assert optim.success, optim.message
     
     return optim.x * scale
