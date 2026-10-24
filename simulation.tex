@@ -32,7 +32,7 @@ In practice, hundreds of thousands of simulations are required to approach stati
 An initial Python implementation of the simulation procedure above was too slow to produce meaningful results. The final implementation uses \texttt{numba} with \texttt{njit} decorators, which stands for 'no python just in time' \cite{lam2015numba}. This compiles the Python code prior to execution, bypassing the CPython interpreter and achieving execution speed near code written in C. However, only a subset of Python and \texttt{numpy} functionality is permitted, requiring significant refactoring away from object-oriented design.
 
 \section{Results}
-Simulations were performed for lattice sizes $L \in \{5, 10, 20, 30, 40, 50, 65, 80, 100\}$. The burn-in period was set to $m=4\times 10^4$ and sequences of length $n=1 \times 10^6$ were retained for each lattice size.
+Simulations were performed for lattice sizes $L \in \{5, 10, 15, 20, 30, 40, 50, 65, 80, 100\}$. The burn-in period was set to $m=4\times 10^4$ and sequences of length $n=1 \times 10^6$ were retained for each lattice size.
 
 \begin{figure}
 \begin{center}

@@ -3,12 +3,14 @@ from numba import njit
 
 # Run the abelian sandpiles simulation
 # Compile the code in nopython mode for significant computational speedup
+# see https://numba.readthedocs.io/en/stable/index.html
 @njit
 def simulate_sandpiles(
         shape: tuple[int, int],                     # finite grid size
         n_steps: int,                               # number of simulation steps
         board: np.ndarray[np.int8, np.int8] = None  # optional board to continue an earlier simulation
-) -> tuple[np.ndarray[np.int8, np.int8], np.ndarray[np.int64], np.ndarray[np.int64], np.ndarray[np.int64], np.ndarray[np.int64]]:
+) -> tuple[np.ndarray[np.int8, np.int8], np.ndarray[np.int64], 
+           np.ndarray[np.int64], np.ndarray[np.int64], np.ndarray[np.int64]]: # output the board and statistics
 
     # initialise the board to be empty
     if board is None:
@@ -40,7 +42,7 @@ def simulate_step(
         queue: np.ndarray[int, int] = None,         # pre-loaded queue
         last_toppled: np.ndarray[int, int] = None,  # keep track of last time space was toppled
         iter: int = 1,                              # current iteration
-) -> tuple[int, int, int, int]:
+) -> tuple[int, int, int, int]:                     # outputs the statisitcs
 
     shape = board.shape
 
@@ -64,7 +66,7 @@ def simulate_step(
     return topple, area, loss, length
 
 
-# simulate the toppling function in the abelian samdpile model
+# simulate the avalanche function in the abelian samdpile model
 @njit
 def _simulate_topple(
             board: np.ndarray[tuple[int, int]],     # current board
@@ -72,7 +74,7 @@ def _simulate_topple(
             queue: np.ndarray[int, int],            # pre-loaded queue
             last_toppled: np.ndarray[int, int],     # when each position was last toppled
             iter: int                               # current iteration
-    ) -> tuple[int, int, int, int]:
+    ) -> tuple[int, int, int, int]:                 # outputs the statistics 
 
     shape = board.shape
 

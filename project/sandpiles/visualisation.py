@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from typing import Callable
 
+# Plot the empirical pmf from a simulation statistic series
 def visualise_statistic(
         stat_series: np.ndarray[int],       # series to plot
         include_zero: bool = False,         # whether to include 0 (i.e. do we care if there is no topple)
@@ -43,8 +44,10 @@ def visualise_statistic(
         ax.plot(x, y, **mle_plot_kwargs)
 
 
-def visualise_sandpile(board: np.ndarray[np.int8, np.int8], 
-                       ax = None):
+# Visualise a sandpile on a lattice
+def visualise_sandpile(board: np.ndarray[np.int8, np.int8],     # sandpile
+                       ax = None                                # existing plot axes (for manual titles etc)
+                       ):
 
     if ax is None:
         fig, ax = plt.subplots()
@@ -69,6 +72,7 @@ def visualise_sandpile(board: np.ndarray[np.int8, np.int8],
     fig.tight_layout()
 
 
+# Plots the avalanche size and area graphs for the report - centralises formatting
 def visualise_mle_fit(
         example_subset: list[int],      # subset of gridsizes to plot
         sims,                           # simulation results
@@ -77,8 +81,7 @@ def visualise_mle_fit(
         area_params,                    # optimisation results
         x_max_topple,                   # s_max
         x_max_area,                     # a_max
-        subplots = None,
-        
+        subplots = None,                # existing fig, ax for formatting
 ):
     if subplots is None:
         fig, ax = plt.subplots(len(example_subset), 2, figsize=(10, 10))
@@ -135,4 +138,4 @@ def visualise_mle_fit(
     ax[-1, 0].set_xlabel("Avalanche Size")
 
     ax[0, 1].set_title("Distribution of Avalanche Area")
-    ax[-1, 1].set_xlabel("Area")
+    ax[-1, 1].set_xlabel("Avalanche Area")

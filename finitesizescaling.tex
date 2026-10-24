@@ -81,7 +81,7 @@ Further, in Figure \ref{fig:powerlaw_exp_taus} the log soft cutoffs $\log \hat{c
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/powerlaw_exp_mle_viz.png}
 \end{center}
-\caption{Fitted MLEs for the unpooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
+\caption{Fitted MLEs for the unpooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_exp_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
 \label{fig:powerlaw_exp_fitted_mle}
 \end{figure} 
 
@@ -136,8 +136,8 @@ The full dataset can be used to fit $\tau, k$, and $ D$ using maximum likelihood
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/pooled_exp_MLE_fit.png}
 \end{center}
-\caption{Fitted MLEs for the pooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
-\label{fig:powerlaw_exp_fitted_mle}
+\caption{Fitted MLEs for the pooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_pooled_exp_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
+\label{fig:pooled_powerlaw_exp_fitted_mle}
 \end{figure} 
 
 
@@ -206,13 +206,13 @@ The unpooled fits in Figure \ref{fig:stretched_unpooled_fit} appear to model the
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/stretched_unpooled_fit.png}
 \end{center}
-\caption{Fitted MLEs for the unpooled stretched exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$. The additional flexibility of the stretching parameter is able to capture the tail behaviour of the pmfs.}
+\caption{Fitted MLEs for the unpooled stretched exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_stretched_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$. The additional flexibility of the stretching parameter is able to capture the tail behaviour of the pmfs.}
 \label{fig:stretched_unpooled_fit}
 \end{figure} 
 
-The pooled fit reveals a very interesting difference between avalanche size and avalanche area. Examining Figure \ref{}, while avalanche area could plausibly have $\beta_a(L) = \beta_a$, $\beta_s$ has a clear $L$-dependence. As $L$ increases, the soft cutoff $c$ increases, but the steepness of the decay $\beta$ decreases. This makes sense, as repeated toppling of the same locations are interrupted by loss at the boundaries, but when the lattice size increases, more grains are retained in the interior for longer, allowing repeated toppling. This is not the case for area; for any $L$, the avalanche area cannot exceed $L^2$, and therefore a sharp decay is needed near the cutoff point.
+The pooled fit reveals a very interesting difference between avalanche size and avalanche area. Examining Figure \ref{fig:stretched_pooled_unpooled_exp_comparison}, while avalanche area could plausibly have $\beta_a(L) = \beta_a$, $\beta_s$ has a clear $L$-dependence. As $L$ increases, the soft cutoff $c$ increases, but the steepness of the decay $\beta$ decreases. This makes sense, as repeated toppling of the same locations are interrupted by loss at the boundaries, but when the lattice size increases, more grains are retained in the interior for longer, allowing repeated toppling. This is not the case for area; for any $L$, the avalanche area cannot exceed $L^2$, and therefore a sharp decay is needed near the cutoff point.
 
-This distinction is clear in the plots of $\log \hat{c}$ vs $\log L$ as well. While the avalanche area shows a well-fitted trendline for the pooled estimators, the avalanche size line does not appear to fit the estimates well. This is because the estimates for $k$ and $D$ adapt to reduce the error of setting a fixed $\beta_s$. Because area can plausibly have a fixed $\beta_a$, this effect is minimised.
+This distinction is clear in the plots of $\log \hat{c}$ vs $\log L$ in Figure \ref{fig:stretched_pooled_unpooled_exp_comparison} as well. While the avalanche area shows a well-fitted trendline for the pooled estimators, the avalanche size line does not appear to fit the estimates as well and is slightly offset from the trend in the unpooled estimators. This is because the estimates for $k$ and $D$ adapt to reduce the error of setting a fixed $\beta_s$. Because area can plausibly have a fixed $\beta_a$, this effect is minimised.
 
 This is consistent with previous work \cite{}, which found that while avalanche area obeys finite size scaling, toppling size has multifractal scaling and is not consistent with finite size scaling.
 
@@ -224,7 +224,7 @@ This is consistent with previous work \cite{}, which found that while avalanche 
         \centering
         \includegraphics[width=\linewidth]{figures/pooled_stretched_MLE_comparison.png}
         \captionof{figure}{A comparison of the unpooled estimates of the parameters (points) with the pooled parameter estimates (dashed lines). If the pmf form and the finite size scaling hypothesis are appropriate, we expect the dashed line to approximate the trend of the points. Based on the above, the pooled model for avalanche area is reasonable, while evidence suggests avalanche size may have an $L-$dependent stretching parameter $\beta_s$.}
-        \label{fig:pooled_unpooled_exp_comparison}
+        \label{fig:stretched_pooled_unpooled_exp_comparison}
     \end{minipage}
     \hfill
     % Right: Table
@@ -248,6 +248,6 @@ This is consistent with previous work \cite{}, which found that while avalanche 
 \begin{center}
 \includegraphics[width=0.80\linewidth]{figures/pooled_stretched_fit.png}
 \end{center}
-\caption{Fitted MLEs for the pooled stretched exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$. The pooled fit degrades compared to the unpooled fit in Figure \ref{fig:stretched_unpooled_fit} for the avalanche size. This is consistent with avalanche size not following a finite size scaling rule. However, the fit is reasonable for avalanche area.}
+\caption{Fitted MLEs for the pooled stretched exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_pooled_stretched_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$. The pooled fit degrades compared to the unpooled fit in Figure \ref{fig:stretched_unpooled_fit} for the avalanche size. This is consistent with avalanche size not following a finite size scaling rule. However, the fit is reasonable for avalanche area.}
 \label{fig:stretched_pooled_fit}
 \end{figure} 

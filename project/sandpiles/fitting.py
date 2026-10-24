@@ -28,6 +28,7 @@ def compute_MLE(
         return - np.sum(pmf(params=scaled_params, loglik=True, **pmf_kwargs))
 
     # run the optimisation procedure (default L-BFGS-B)
+    # see https://docs.scipy.org/doc/scipy/reference/optimize.minimize-lbfgsb.html#optimize-minimize-lbfgsb
     return scipy.optimize.minimize(
         fun = neg_loglik,
         x0 = p0,
