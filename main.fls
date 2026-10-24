@@ -298,6 +298,7 @@ INPUT ./simulation.tex
 INPUT ./simulation.tex
 INPUT simulation.tex
 INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
 INPUT ./figures/simulation_four_statistics.png
 INPUT ./figures/simulation_four_statistics.png
 INPUT ./figures/simulation_four_statistics.png
@@ -451,4 +452,5 @@ INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfo
 INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
 INPUT c:/Users/purce/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb

@@ -75,67 +75,96 @@ def visualise_sandpile(board: np.ndarray[np.int8, np.int8],     # sandpile
 # Plots the avalanche size and area graphs for the report - centralises formatting
 def visualise_mle_fit(
         example_subset: list[int],      # subset of gridsizes to plot
-        sims,                           # simulation results
+        avalanche_data,                 # simulation results
         pmf,                            # pmf to use for the MLE
-        topple_params,                  # optimisation results
-        area_params,                    # optimisation results
-        x_max_topple,                   # s_max
-        x_max_area,                     # a_max
+        statistics,                     # list of statistics to plot
+        params,                         # optimisation results
+        x_max,                          # hard cutoff values
+        colors,                         # statistic color mapping
+        names,                          # statistic names
+        symbols,                        # statistic symbols
         subplots = None,                # existing fig, ax for formatting
+        suptitle = None,                # big title to write at the top
+        sup_y = None,                   # y position of the big title
 ):
     if subplots is None:
-        fig, ax = plt.subplots(len(example_subset), 2, figsize=(10, 10))
+        fig, ax = plt.subplots(len(example_subset), len(statistics), 
+                               figsize=(5*len(statistics), 10*len(example_subset)/3))
     else:
         fig, ax = subplots
 
-    # visualise for L=30
-    for i, L_example in enumerate(example_subset):
+    for j, stat in enumerate(statistics):
+        for i, L_example in enumerate(example_subset):
+            # plot the data using the previous helper function
+            visualise_statistic(
+                stat_series = avalanche_data[stat][L_example][avalanche_data[stat][L_example] <= x_max[stat][L_example]],
+                log=True,
+                ax = ax[i, j],
+                pmf = pmf,
+                mle_params = params[stat][L_example],
+                pmf_kwargs = {"x_max": x_max[stat][L_example]},
+                mle_plot_kwargs={"color": "black", 
+                                "label": fr"MLE: $\hat{{\tau}}_{symbols[stat]} = {params[stat][L_example][0]: .2f}$", 
+                                "marker": "o",
+                                "ms": 1.5},
+                ms = 1.5,
+                label = f"L = {L_example}",
+                color = colors[stat],
+                linestyle="None",
+            )
+            ax[i, j].axvline(x_max[stat][L_example], linestyle="dashed", color=colors[stat], label=fr"${symbols[stat]}_{{max}}(L)$")
+            ax[i, j].legend()
+            ax[i, j].set_xlim(0.5, max([2*x_max[stat][L] for L in example_subset]))
+            ax[i, j].set_ylim(10**(-6), 10**0)
 
-        visualise_statistic(
-            stat_series = sims[L_example].topples[sims[L_example].topples <= x_max_topple[L_example]],
-            log=True,
-            ax = ax[i, 0],
-            pmf = pmf,
-            mle_params = topple_params[L_example],
-            pmf_kwargs = {"x_max": x_max_topple[L_example]},
-            mle_plot_kwargs={"color": "black", 
-                            "label": r"MLE: $\hat{\tau} = $" + f"{topple_params[L_example][0]:.2f}", 
-                            "marker": "o",
-                            "ms": 1.5},
-            ms = 1.5,
-            label = f"L = {L_example}",
-            linestyle="None",
-        )
-        ax[i, 0].legend()
-        
-        ax[i, 0].set_ylabel("Frequency")
-        ax[i, 0].set_xlim(0.5, 10**5)
-        ax[i, 0].set_ylim(10**(-6), 10**0)
+            # only put a y label on the rows
+            ax[i, 0].set_ylabel("Frequency")
 
 
-        visualise_statistic(
-            stat_series = sims[L_example].area[sims[L_example].area <= x_max_area[L_example]],
-            log=True,
-            ax = ax[i, 1],
-            pmf = pmf,
-            mle_params = area_params[L_example],
-            pmf_kwargs = {"x_max": x_max_area[L_example]},
-            mle_plot_kwargs={"color": "black", 
-                            "label": r"MLE: $\hat{\tau} = $" + f"{area_params[L_example][0]:.2f}",
-                            "marker": "o",
-                            "ms": 1.5},
-            ms = 1.5,
-            label = f"L = {L_example}",
-            color = "C1",
-            linestyle = "None"
-        )
-        ax[i, 1].set_xlim(0.5, 10**5)
-        ax[i, 1].set_ylim(10**(-6), 10**0)
-        ax[i, 1].axvline(x_max_area[L_example], linestyle="dashed", color="C1", label=r"$a_{max}(L)$")
-        ax[i, 1].legend()
+        # only title the top and put an xlabel on the bottom of each plot column
+        ax[0, j].set_title(f"Distribution of Avalanche {names[stat]}")
+        ax[-1, j].set_xlabel(f"Avalanche {names[stat]}")
 
-    ax[0, 0].set_title("Distribution of Avalanche Size")
-    ax[-1, 0].set_xlabel("Avalanche Size")
+    if suptitle is not None:
+        fig.suptitle(suptitle, y=sup_y)
 
-    ax[0, 1].set_title("Distribution of Avalanche Area")
-    ax[-1, 1].set_xlabel("Avalanche Area")
+
+def visualise_tau_plots(
+        statistics,                                 # list of statistics to plot tau for
+        gridsizes,                                  # list of all values of L
+        params,                                     # optimisation results
+        symbols,                                    # dict connecting statistics to notation letters
+        colors,                                     # dict connecting statistics to standard colors
+        subplots = None,                            # pass in existing subplot
+        title = r"MLE $\hat{\tau}(L)$ vs $L$",      # plot title
+        hlines = None,                              # horizontal line values for pooled MLE plots
+        **kwargs                                    # other arguments
+):
+    if subplots is None:
+        fig, ax = plt.subplots(1, 1)
+    else:
+        fig, ax = subplots
+    
+    for stat in statistics:
+        ax.plot(gridsizes, 
+                [params[stat][L][0] for L in gridsizes], 
+                label=fr"$\hat{{\tau}}_{symbols[stat]}(L)$", 
+                color=colors[stat],
+                marker = "o",
+                ms = 1.5,
+                **kwargs)
+
+        if hlines is not None:
+            ax.hlines(
+                hlines[stat], 
+                xmin=0, 
+                xmax=gridsizes[-1], 
+                colors=[colors[stat]], 
+                linestyles=["dashed"], 
+                label= fr"$\hat{{\tau}}_{symbols[stat]}$")
+
+    ax.set_xlabel(r"L")
+    ax.set_ylabel(r"Power Law Coefficient $\hat{\tau}$ MLE")
+    ax.set_ylim(bottom=min(0.5, min(params[s][L][0] - 0.1 for s in statistics for L in gridsizes)))
+    ax.set_title(title)
+    ax.legend()

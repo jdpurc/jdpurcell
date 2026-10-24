@@ -29,9 +29,14 @@ def compute_MLE(
 
     # run the optimisation procedure (default L-BFGS-B)
     # see https://docs.scipy.org/doc/scipy/reference/optimize.minimize-lbfgsb.html#optimize-minimize-lbfgsb
-    return scipy.optimize.minimize(
+    optim = scipy.optimize.minimize(
         fun = neg_loglik,
         x0 = p0,
         bounds=bounds,
         **kwargs
-    ).x * scale
+    )
+    
+    # test for convergence
+    assert(optim.success, optim.message)
+    
+    return optim.x * scale
