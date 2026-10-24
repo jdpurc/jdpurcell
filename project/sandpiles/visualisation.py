@@ -130,15 +130,18 @@ def visualise_mle_fit(
 
 
 def visualise_tau_plots(
-        statistics,                                 # list of statistics to plot tau for
-        gridsizes,                                  # list of all values of L
-        params,                                     # optimisation results
-        symbols,                                    # dict connecting statistics to notation letters
-        colors,                                     # dict connecting statistics to standard colors
-        subplots = None,                            # pass in existing subplot
-        title = r"MLE $\hat{\tau}(L)$ vs $L$",      # plot title
-        hlines = None,                              # horizontal line values for pooled MLE plots
-        **kwargs                                    # other arguments
+    statistics,                                 # list of statistics to plot tau for
+    gridsizes,                                  # list of all values of L
+    params,                                     # optimisation results
+    symbols,                                    # dict connecting statistics to notation letters
+    colors,                                     # dict connecting statistics to standard colors
+    subplots = None,                            # pass in existing subplot
+    coef_index = 0,                             # index of param to plot within param array
+    title = r"MLE $\hat{\tau}(L)$ vs $L$",      # plot title
+    ylabel = r"Power Law Coefficient $\hat{\tau}$ MLE", # plot ylabel
+    latex = r"\hat{{\tau}}",                    # latex formatting character to drop in
+    hlines = None,                              # horizontal line values for pooled MLE plots
+    **kwargs                                    # other arguments
 ):
     if subplots is None:
         fig, ax = plt.subplots(1, 1)
@@ -147,8 +150,8 @@ def visualise_tau_plots(
     
     for stat in statistics:
         ax.plot(gridsizes, 
-                [params[stat][L][0] for L in gridsizes], 
-                label=fr"$\hat{{\tau}}_{symbols[stat]}(L)$", 
+                [params[stat][L][coef_index] for L in gridsizes], 
+                label=fr"${latex}_{symbols[stat]}(L)$", 
                 color=colors[stat],
                 marker = "o",
                 ms = 1.5,
@@ -161,10 +164,50 @@ def visualise_tau_plots(
                 xmax=gridsizes[-1], 
                 colors=[colors[stat]], 
                 linestyles=["dashed"], 
-                label= fr"$\hat{{\tau}}_{symbols[stat]}$")
+                label=fr"${latex}_{symbols[stat]} = {hlines[stat]: .2f}$")
 
     ax.set_xlabel(r"L")
-    ax.set_ylabel(r"Power Law Coefficient $\hat{\tau}$ MLE")
-    ax.set_ylim(bottom=min(0.5, min(params[s][L][0] - 0.1 for s in statistics for L in gridsizes)))
+    ax.set_ylabel(ylabel)
+    ax.set_ylim(bottom=min(0.5, min(params[s][L][coef_index] - 0.1 for s in statistics for L in gridsizes)))
     ax.set_title(title)
     ax.legend()
+
+
+def visualise_c_L_plots(
+    statistics,                                 # list of statistics to plot tau for
+    gridsizes,                                  # list of all values of L
+    params,                                     # optimisation results
+    symbols,                                    # dict connecting statistics to notation letters
+    colors,                                     # dict connecting statistics to standard colors
+    subplots = None,                            # pass in existing subplot
+    title = r"MLE $\hat{c}(L)$ vs $L$",         # plot title
+    k = None,                                   # pooled line intercept
+    D = None,                                   # pooled fractal dimension
+    **kwargs                                    # other arguments
+    ):
+    if subplots is None:
+        fig, ax = plt.subplots(1, 1)
+    else:
+        fig, ax = subplots
+
+    x = np.arange(gridsizes[0], gridsizes[-1] + 1)
+
+    for stat in statistics:
+        ax.plot(gridsizes, 
+                [params[stat][L][1] for L in gridsizes], 
+                label=fr"$\hat{{c}}_{symbols[stat]}(L)$", 
+                marker="o", 
+                ms=1.5, 
+                color = colors[stat],
+                **kwargs)
+
+        if k is not None and D is not None:
+            y = k[stat] * np.power(x, D[stat])
+            ax.plot(x, y, color=colors[stat], label=fr"$\hat{{D}}_{symbols[stat]} = {D[stat]: .2f}$", linestyle="dashed")
+        
+        ax.legend()
+        ax.set_xlabel(r"L")
+        ax.set_ylabel(r"Soft Truncation Parameter $\hat{c}$ MLE")
+        ax.set_yscale("log")
+        ax.set_xscale("log")
+        ax.set_title(title)

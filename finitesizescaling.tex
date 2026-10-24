@@ -34,8 +34,8 @@ The likelihood and log-likelihood are:
 As before, for each $L$, we numerically optimise the log-likelihood function to obtain:
 \[\hat{\tau}(L), \hat{c}(L) = \argmin_{\tau, c}\left\{ -\log \mathcal{L}(\mathbf{x}_L; \tau, c, x_{max}) \right\}\]
 
-LIke before, set $\tau = \tau_s(L), x_{max} = s_{max}(L), c = c_s(L)$ for modelling the avalanche size, and $\tau = \tau_a(L), x_{max} = a_{max}(L), c = c_a(L)$ for modelling the avalanche area.
-Recall we fix $a_{max}(L) = L^2$ and $s_{max}(L) = L^3$ as known.
+Set $\tau = \tau_s(L), x_{max} = s_{max}(L), c = c_s(L)$ for modelling the avalanche size, $\tau = \tau_a(L), x_{max} = a_{max}(L), c = c_a(L)$, and $\tau = \tau_d(L), x_{max} = d_{max}(L), c = c_d(L)$ for modelling the avalanche area.
+Recall we fix $a_{max}(L) = L^2$, $d_{max}=2L$, and $s_{max}(L) = 10L^2$ as known.
 
 The results in Table \ref{tab:powerlaw_exp_taus} are promising: for lattice sizes 40 and above, the powerlaw coefficient $\tau \approx 1$.
 Further, in Figure \ref{fig:powerlaw_exp_taus} the log soft cutoffs $\log \hat{c}$ appear to scale linearly in $\log L$, a relationship that we will examine in more detail when computing the pooled estimators.
@@ -43,43 +43,43 @@ Further, in Figure \ref{fig:powerlaw_exp_taus} the log soft cutoffs $\log \hat{c
 
 \begin{figure}
     \centering
-
+    \makebox[\textwidth][c] {
     % Left: Figure
-    \begin{minipage}[c]{0.6\textwidth}
+    \begin{minipage}[c]{0.58\textwidth}
         \centering
         \includegraphics[width=\linewidth]{figures/powerlaw_exp_taus_taua_plot.png}
-        \captionof{figure}{Estimates MLEs $\hat{\tau}_s(L), \hat{\tau}_a(L)$ (left) and $\hat{c}_s(L), \hat{c}_a(L)$ (right) for varying lattice sizes $L$.}
+        \captionof{figure}{Estimates MLEs $\hat{\tau}_s(L), \hat{\tau}_a(L), \hat{\tau}_d(L)$ (left) and $\hat{c}_s(L), \hat{c}_a(L), \hat{c}_d(L)$ (right) for varying lattice sizes $L$.}
         \label{fig:powerlaw_exp_taus}
     \end{minipage}
     \hfill
     % Right: Table
-    \begin{minipage}[c]{0.38\textwidth}
+    \begin{minipage}[c]{0.58\textwidth}
         \centering
-        \begin{tabular}{|l|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
-        $L$ & $\hat{\tau}_s(L)$ & $\hat{c}_s(L)$ & $\hat{\tau}_a(L)$ & $\hat{c}_a(L)$ \\
+        $L$ & $\hat{\tau}_s(L)$ & $\hat{c}_s(L)$ & $\hat{\tau}_a(L)$ & $\hat{c}_a(L)$ & $\hat{\tau}_d(L)$ & $\hat{c}_d(L)$\\
         \hline
-            5 &  0.38 &  5.69 &  0.44 &  6.27 \\
-            10 &  0.68 &  27.49 &  0.67 &  26.58 \\
-            15 &  0.84 &  81.55 &  0.82 &  74.76 \\
-            20 &  0.90 &  169.69 &  0.88 &  148.70 \\
-            30 &  0.94 &  444.13 &  0.91 &  355.15 \\
-            40 &  0.96 &  902.92 &  0.94 &  671.42 \\
-            50 &  0.99 &  1623.38 &  0.96 &  1124.59 \\
-            65 &  1.01 &  3237.96 &  0.98 &  2020.08 \\
-            80 &  1.02 &  5846.02 &  0.99 &  3306.74 \\
-            100 &  1.04 &  10599.48 &  1.01 &  5372.85 \\
+            5 &  0.44 &  6.15 &  0.52 &  7.01 &  0.00 &  2.24 \\
+            10 &  0.74 &  30.26 &  0.74 &  30.24 &  0.00 &  4.22 \\
+            15 &  0.83 &  79.33 &  0.82 &  74.17 &  0.00 &  5.93 \\
+            20 &  0.88 &  157.56 &  0.86 &  140.37 &  0.00 &  7.47 \\
+            30 &  0.93 &  428.18 &  0.91 &  355.29 &  0.14 &  11.73 \\
+            40 &  0.96 &  868.82 &  0.94 &  683.27 &  0.27 &  16.88 \\
+            50 &  0.98 &  1509.00 &  0.96 &  1124.60 &  0.35 &  22.16 \\
+            65 &  1.00 &  2924.10 &  0.98 &  2041.31 &  0.44 &  30.43 \\
+            80 &  1.02 &  4932.09 &  0.99 &  3269.35 &  0.50 &  39.24 \\
+            100 &  1.03 &  8647.45 &  1.01 &  5427.84 &  0.56 &  51.29 \\
         \hline
         \end{tabular}
         \captionof{table}{MLE power-law slopes $\tau$ and soft cutoffs $c$ obtained for varying lattice sizes $L$}
         \label{tab:powerlaw_exp_taus}
     \end{minipage}
-
+    }
 \end{figure}
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.80\linewidth]{figures/powerlaw_exp_mle_viz.png}
+\includegraphics[width=\linewidth]{figures/powerlaw_exp_mle_viz.png}
 \end{center}
 \caption{Fitted MLEs for the unpooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_exp_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
 \label{fig:powerlaw_exp_fitted_mle}
@@ -93,7 +93,7 @@ Consider again the Finite Size Scaling hypothesis:
 In the previous section, we modelled 
 \[p(X=x; \tau, L, c, D) \propto x^{-\tau} \exp\left(-\frac{x}{c}\right)\]
 
-Therefore, if the chosen pmf is adequate to model the behaviour of the system, and the statistics obey finite size scaling, then we should observe a constant powerlaw coefficient $\tau_s = \tau_s(L)$ and $\tau_a = \tau_a(L)$, as well as the relationship $c_s(L) = k_s L^D_s$ and $c_a(L) = k_a L ^D_a$ for some constants $k_s, k_a, D_s, D_a$. 
+Therefore, if the chosen pmf is adequate to model the behaviour of the system, and the statistics obey finite size scaling, then we should observe a constant powerlaw coefficient $\tau_s = \tau_s(L)$, $\tau_a = \tau_a(L)$, $\tau_d = \tau_d(L)$ as well as the relationships $c_s(L) = k_s L^D_s$, $c_a(L) = k_a L ^D_a$, and $c_d(L) = k_d L ^D_d$ for some constants $k_s, k_a, k_d, D_s, D_a, D_d$. 
 
 To assess whether this is plausible, consider the pooled likelihood. Let $\mathbf{L} = (L_1, L_2, \cdots, L_K)$ be the set of lattice sizes simulated, and let $\mathbf{x}^j = (x_1^j, \cdots, x_n^j)$ be the set of simulated statistics from lattice size $L_j$.
 
@@ -121,8 +121,9 @@ The full dataset can be used to fit $\tau, k$, and $ D$ using maximum likelihood
         \hline
          & $\hat{\tau}$ & $\hat{k}$ & $\hat{D}$ \\
         \hline
-            Size $s$ &  0.97 &  0.38 &  2.11 \\
+            Size $s$ & 0.97 &  0.38 &  2.11 \\
             Area $a$ & 0.95 &  0.74 &  1.86 \\
+            $L_1$ Length $d$ & 0.30 &  0.88 &  0.81 \\
         \hline
         \end{tabular}
         \captionof{table}{Pooled MLE coefficients for finite size scaling assuming the exponentially truncated power law distribution. We expect $\hat{D} \approx 2$ and $\hat{\tau} \approx 1$ for both avalanche area and size, so the results seem reasonable.}
@@ -134,9 +135,9 @@ The full dataset can be used to fit $\tau, k$, and $ D$ using maximum likelihood
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.80\linewidth]{figures/pooled_exp_MLE_fit.png}
+\includegraphics[width=\linewidth]{figures/pooled_exp_MLE_fit.png}
 \end{center}
-\caption{Fitted MLEs for the pooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_pooled_exp_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the bound on avalanche area, $L^2$.}
+\caption{Fitted MLEs for the pooled exponentially truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_pooled_exp_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes.}
 \label{fig:pooled_powerlaw_exp_fitted_mle}
 \end{figure} 
 
@@ -182,20 +183,20 @@ The unpooled fits in Figure \ref{fig:stretched_unpooled_fit} appear to model the
 
 \begin{table}
 \centering
-        \begin{tabular}{|l|l|l|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
         \hline
-        $L$ & $\hat{\tau}_s(L)$ & $\hat{c}_s(L)$ & $\hat{\beta}_s(L)$ & $\hat{\tau}_a(L)$ & $\hat{c}_a(L)$  & $\hat{\beta}_a(L)$\\
+        $L$ & $\hat{\tau}_s(L)$ & $\hat{c}_s(L)$ & $\hat{\beta}_s(L)$ & $\hat{\tau}_a(L)$ & $\hat{c}_a(L)$  & $\hat{\beta}_a(L)$& $\hat{\tau}_d(L)$ & $\hat{c}_d(L)$  & $\hat{\beta}_d(L)$\\
         \hline
-            5 &  0.93 &  16.35 &  2.89 &  0.95 &  16.63 &  3.74\\
-            10 &  0.94 &  58.46 &  2.20 &  0.96 &  57.94 &  3.68\\
-            15 &  0.95 &  132.94 &  1.89 &  0.97 &  127.99 &  3.70\\
-            20 &  0.96 &  240.46 &  1.67 &  0.98 &  227.44 &  3.70\\
-            30 &  0.98 &  585.36 &  1.47 &  1.00 &  523.71 &  3.84\\
-            40 &  0.99 &  1105.52 &  1.35 &  1.01 &  949.77 &  3.89\\
-            50 &  1.00 &  1801.77 &  1.24 &  1.02 &  1502.45 &  3.91\\
-            65 &  1.01 &  3244.76 &  1.13 &  1.03 &  2594.24 &  3.95\\
-            80 &  1.02 &  5202.42 &  1.06 &  1.03 &  3992.74 &  3.95\\
-            100 &  1.03 &  8802.44 &  1.02 &  1.04 &  6348.15 &  4.10\\
+            5 &  0.93 &  16.35 &  2.89 &  0.95 &  16.63 &  3.74 &  0.20 &  5.15 &  3.54 \\
+            10 &  0.94 &  58.46 &  2.20 &  0.96 &  57.94 &  3.68 &  0.35 &  10.19 &  3.31 \\
+            15 &  0.95 &  132.94 &  1.89 &  0.97 &  127.99 &  3.70 &  0.44 &  15.36 &  3.26 \\
+            20 &  0.96 &  240.46 &  1.67 &  0.98 &  227.45 &  3.70 &  0.50 &  20.50 &  3.18 \\
+            30 &  0.98 &  585.36 &  1.47 &  1.00 &  523.71 &  3.84 &  0.58 &  31.09 &  3.15 \\
+            40 &  0.99 &  1105.57 &  1.35 &  1.01 &  949.78 &  3.89 &  0.64 &  41.66 &  3.07 \\
+            50 &  1.00 &  1801.78 &  1.24 &  1.02 &  1502.50 &  3.91 &  0.67 &  52.02 &  2.99 \\
+            65 &  1.01 &  3245.28 &  1.13 &  1.03 &  2594.20 &  3.95 &  0.71 &  67.22 &  2.83 \\
+            80 &  1.02 &  5202.40 &  1.06 &  1.03 &  3992.73 &  3.95 &  0.75 &  83.47 &  2.83 \\
+            100 &  1.03 &  8802.59 &  1.02 &  1.04 &  6348.53 &  4.11 &  0.77 &  103.50 &  2.66 \\
         \hline
         \end{tabular}
         \caption{Unpooled MLE power-law slopes $\tau$, soft cutoffs $c$, and stretching coefficient $\beta$ obtained for varying lattice sizes $L$.}
@@ -235,7 +236,8 @@ This is consistent with previous work \cite{}, which found that while avalanche 
          & $\hat{\tau}$ & $\hat{k}$ & $\hat{D}$ & $\hat{\beta}$\\
         \hline
             Size $s$ & 1.02 &  0.42 &  2.18 &  1.66\\
-            Area $a$ & 1.02 &  0.69 &  1.97 &  3.99\\
+            Area $a$ & 1.02 &  0.69 &  1.97 &  4.00\\
+            $L_1$ Length $d$ & 0.69 &  1.26 &  0.97 &  3.94\\
         \hline
         \end{tabular}
         \captionof{table}{Pooled MLE coefficients for finite size scaling assuming the stretched exponentially truncated power law distribution. We expect $\hat{D} \approx 2$ and $\hat{\tau} \approx 1$ for both avalanche area and size, so the results seem reasonable.}
