@@ -41,7 +41,7 @@ Finally, to prevent numerical underflow when dealing with tiny probabilties of t
 These methods were used across all likelihood estimations in this project.
 
 Let $\tau = \tau_s(L), x_{max} = s_{max}(L)$ for modelling the avalanche size, $\tau = \tau_a(L), x_{max} = a_{max}(L)$ for modelling the avalanche area, and $\tau = \tau_d(L), x_{max} = d_{max}(L)$ for modelling the avalanche $L_1$ length.
-We first consider a full-data estimation procedure, where we ignore the non-linear distribution tails and fit $\tau$ for each statistic considered and lattice size simulated. Here, we fix $a_{max}(L) = L^2$, $d_{max}(L) = 2L$, and $s_{max}(L) = 10L^2$ as known; this is clearly justified as the theoretical maximum for avalanche area and $L_1$ length, and is a computational adjustment for avalanche size that exceeds any observed avalanche size in the simulated data.
+We first consider a full-data estimation procedure, where we ignore the non-linear distribution tails and fit $\tau$ for each statistic considered and lattice size simulated. Here, we fix $a_{max}(L) = L^2$, $d_{max}(L) = 2L$, and $s_{max}(L) = 10L^2$ as known; this is clearly justified as the theoretical maximum for avalanche area and a conservative maximum for $L_1$ length, and is a computational adjustment for avalanche size that exceeds any observed avalanche size in the simulated data.
 
 Under the finite size scaling hypothesis discussed in \ref{sec:stats}, we expect that the power law coefficient should be constant for all values of $L$, i.e. we expect $\tau_s(L) = \tau_s$, $\tau_a(L) = \tau_a$, and $\tau_d(L) = \tau_d$.
 
@@ -89,7 +89,7 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
 \begin{center}
 \includegraphics[width=\linewidth]{figures/powerlaw_mle_viz.png}
 \end{center}
-\caption{Full-data bounded power law MLE fits are skewed down from the true power law coefficient due to the tail decay. Select lattice sizes $L = 5, 30, 100$ are depicted. The fits for all lattice sizes are depicted in Appendix Figure \ref{fig:APPENDIX_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, the centre column shows avalanche area, while the right column shows avalanche $L_1$ length. The dashed vertical lines represent the fixed parameter $x_{max}$.}
+\caption{Full-data bounded power law MLE fits overestimates the slope relative to the linear section of the data. Select lattice sizes $L = 5, 30, 100$ are depicted. The fits for all lattice sizes are depicted in Appendix Figure \ref{fig:APPENDIX_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, the centre column shows avalanche area, while the right column shows avalanche $L_1$ length. The dashed vertical lines represent the fixed parameter $x_{max}$.}
 \label{fig:powerlaw_fitted_mle}
 \end{figure} 
 

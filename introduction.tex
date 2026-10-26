@@ -4,7 +4,7 @@
 % MOTIVATION
 %--------
 
-The concept of self-organised criticality was first introduced by Bak, Tang, and Wiesenfeld in 1987 \cite{btw1987intro}. The central idea is that some slowly-varying complex systems drive themselves towards critical attractor states over time. In these states, consequences of a tiny perterbation are scale invariant. This means that collosal events can be triggered by miniscule changes to the system; such events may often follow a power law distribution. Many observed physical phenomena obey power law scaling - including earthquakes, forest fires, epidemics, etc. However, there is often a physical limit to the size of the event, which we characterise by the constant $L$.
+The concept of self-organised criticality was first introduced by Bak, Tang, and Wiesenfeld in 1987 \cite{btw1987intro}. The central idea is that some slowly-varying complex systems drive themselves towards critical attractor states over time. In these states, consequences of a tiny perturbation are scale invariant. This means that colossal events can be triggered by miniscule changes to the system; such events may often follow a power law distribution. Many observed physical phenomena obey power law scaling - including earthquakes, forest fires, epidemics, etc. However, there is often a physical limit to the size of the event, which we characterise by the constant $L$.
 
 The goal of this project is to simulate a complex system which evolves based only on rules connecting small units, and study the distributions of resulting system-level phenomena. To do so, we implement the Abelian (BTW) Sandpiles Model discussed in \cite{btw1987intro}. This model is formalised below, but in short, a grain of sand is randomly deposited on a square $L \times L$ lattice at each step of the simulation, and adds to the height of the sandpile at the site where it is deposited. When a site on the lattice reaches a critical height, it topples, distributing its grains to its neighbouring sites. This can trigger a chain of topplings, called an avalanche.
 
@@ -19,7 +19,7 @@ The research question investigated in this report is: \textit{How can we model t
 \section{Mathematical Formulation of the BTW Model}
 Here, we formally introduce the Abelian Sandpiles Model and argue why the methods used in this report are appropriate. Below, we adapt the notation and arguments of Járai, 2018 \cite{jaraisandpilenotes}.
 
-Begin by defining a two-dimensional square lattice, which can be thought of as a grid with integer rows and columns. With lattice size $L$, this is the a graph $G_L = (V_L, E_L)$, where 
+Begin by defining a two-dimensional square lattice, which can be thought of as a grid with integer rows and columns. With lattice size $L$, this is the graph $G_L = (V_L, E_L)$, where 
 \[V_L := \{(x, y) \in \Z^2: 1 \leq x, y \leq L\}\] 
 defines the set of vertices and 
 \[E_L := \{\mathbf{xy}: \mathbf{x}, \mathbf{y}\in V_L \land \norm{\mathbf{x}-\mathbf{y}}_1=1\}\] 
@@ -27,7 +27,7 @@ defines the set of edges, where $\norm{\mathbf{x}-\mathbf{y}}_1$ denotes the $L_
 
 Each cell in the grid connects with its vertical and horizontal neighbours. Let $N(\mathbf{x}) = \{\mathbf{y} \in V_L: \mathbf{xy} \in E_L\}$ be this neighbourhood of $\mathbf{x}$ in $G$.
 
-A sandpile is a pile of grains sitting on the lattice, defined by a height at each cell. Formally, it is a map $\eta: V_L \to \Z_{\geq 0}$, where $\eta(\mathbf{x})$ is represents the height of the sandpile at site $\mathbf{x}$.
+A sandpile is a pile of grains sitting on the lattice, defined by a height at each cell. Formally, it is a map $\eta: V_L \to \Z_{\geq 0}$, where $\eta(\mathbf{x})$ represents the height of the sandpile at site $\mathbf{x}$.
 
 In the BTW model, sandpiles cannot support sites that are too high. Define the critical height as $\eta_c := \max_{\mathbf{x}\in V_L} \deg_G(\mathbf{x})$. In the above setup, $\eta_c = 4$ provided $L \geq 3$. A site $\mathbf{x} \in V_L$ is called stable iff $\eta(\mathbf{x}) < \eta_c$ and is otherwise unstable. The sandpile $\eta$ is stable iff it is stable at each site $\mathbf{x} \in V_L$.
 
