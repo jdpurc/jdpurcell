@@ -1,10 +1,5 @@
 \begin{thebibliography}{1}
 
-\bibitem{bak1987self}
-P.~Bak, C.~Tang, and K.~Wiesenfeld.
-\newblock Self-organized criticality: An explanation of the 1/f noise.
-\newblock {\em Physical review letters}, 59(4):381, 1987.
-
 \bibitem{btw1987intro}
 P.~Bak, C.~Tang, and K.~Wiesenfeld.
 \newblock Self-organized criticality: An explanation of the 1/f noise.
@@ -14,6 +9,11 @@ P.~Bak, C.~Tang, and K.~Wiesenfeld.
 R.~H. Byrd, P.~Lu, J.~Nocedal, and C.~Zhu.
 \newblock A limited memory algorithm for bound constrained optimization.
 \newblock {\em SIAM Journal on scientific computing}, 16(5):1190--1208, 1995.
+
+\bibitem{clauset2009power}
+A.~Clauset, C.~R. Shalizi, and M.~E. Newman.
+\newblock Power-law distributions in empirical data.
+\newblock {\em SIAM review}, 51(4):661--703, 2009.
 
 \bibitem{dhar1990self}
 D.~Dhar.
@@ -29,5 +29,10 @@ A.~A. J{\'a}rai.
 S.~K. Lam, A.~Pitrou, and S.~Seibert.
 \newblock Numba: A llvm-based python jit compiler.
 \newblock In {\em Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC}, LLVM '15, pages 7:1--7:6, New York, NY, USA, 2015. ACM.
+
+\bibitem{tebaldi1999multifractal}
+C.~Tebaldi, M.~De~Menech, and A.~L. Stella.
+\newblock Multifractal scaling in the bak-tang-wiesenfeld sandpile and edge events.
+\newblock {\em Physical review letters}, 83(19):3952, 1999.
 
 \end{thebibliography}

@@ -1,7 +1,7 @@
 % REFERENCES
 
 % --------
-% References for: introducing the Sandpiles Model and Mathematical Properties
+% References for: introducing the Sandpiles Model
 % --------
 
 % BTW model introduced (foundational paper)
@@ -20,7 +20,23 @@
   url = {https://link.aps.org/doi/10.1103/PhysRevLett.59.381}
 }
 
+%--------
+% References for: Mathematical Background
+%--------
 
+% abelian
+@article{dhar1990self,
+  title={Self-organized critical state of sandpile automaton models},
+  author={Dhar, Deepak},
+  journal={Physical review letters},
+  volume={64},
+  number={14},
+  pages={1613},
+  year={1990},
+  publisher={APS}
+}
+
+% mathematical formulation and probability setup
 @article{jaraisandpilenotes,
 author = {Antal A. J{\'a}rai},
 title = {{Sandpile models}},
@@ -35,18 +51,18 @@ doi = {10.1214/14-PS228},
 URL = {https://doi.org/10.1214/14-PS228}
 }
 
-
-
-@article{dhar1990self,
-  title={Self-organized critical state of sandpile automaton models},
-  author={Dhar, Deepak},
-  journal={Physical review letters},
-  volume={64},
-  number={14},
-  pages={1613},
-  year={1990},
-  publisher={APS}
+% power law MLE
+@article{clauset2009power,
+  title={Power-law distributions in empirical data},
+  author={Clauset, Aaron and Shalizi, Cosma Rohilla and Newman, Mark EJ},
+  journal={SIAM review},
+  volume={51},
+  number={4},
+  pages={661--703},
+  year={2009},
+  publisher={SIAM}
 }
+
 
 %--------
 % References for: Implementation Details
@@ -66,6 +82,18 @@ URL = {https://doi.org/10.1214/14-PS228}
   doi       = {10.1145/2833157.2833162},
   publisher = {ACM},
   address   = {New York, NY, USA}
+}
+
+% optimisation algorithm used in scipy
+@article{byrd1995limited,
+  title={A limited memory algorithm for bound constrained optimization},
+  author={Byrd, Richard H and Lu, Peihuang and Nocedal, Jorge and Zhu, Ciyou},
+  journal={SIAM Journal on scientific computing},
+  volume={16},
+  number={5},
+  pages={1190--1208},
+  year={1995},
+  publisher={SIAM}
 }
 
 
@@ -91,46 +119,6 @@ URL = {https://doi.org/10.1214/14-PS228}
 
 
 % Topplings do not obey FSS but area does
-@article{PhysRevLett.83.3952,
-  title = {Multifractal Scaling in the Bak-Tang-Wiesenfeld Sandpile and Edge Events},
-  author = {Tebaldi, Claudio and De Menech, Mario and Stella, Attilio L.},
-  journal = {Phys. Rev. Lett.},
-  volume = {83},
-  issue = {19},
-  pages = {3952--3955},
-  numpages = {0},
-  year = {1999},
-  month = {Nov},
-  publisher = {American Physical Society},
-  doi = {10.1103/PhysRevLett.83.3952},
-  url = {https://link.aps.org/doi/10.1103/PhysRevLett.83.3952}
-}
-
-
-
-@article{dhar1999abelian,
-  title={The abelian sandpile and related models},
-  author={Dhar, Deepak},
-  journal={Physica A: Statistical Mechanics and its applications},
-  volume={263},
-  number={1-4},
-  pages={4--25},
-  year={1999},
-  publisher={Elsevier}
-}
-
-@article{dhar1995algebraic,
-  title={Algebraic aspects of abelian sandpile models},
-  author={Dhar, Deepak and Ruelle, Philippe and Sen, Siddhartha and Verma, D-N},
-  journal={Journal of physics A: mathematical and general},
-  volume={28},
-  number={4},
-  pages={805--831},
-  year={1995}
-}
-
-
-
 @article{tebaldi1999multifractal,
   title={Multifractal scaling in the Bak-Tang-Wiesenfeld sandpile and edge events},
   author={Tebaldi, Claudio and De Menech, Mario and Stella, Attilio L},
@@ -142,54 +130,3 @@ URL = {https://doi.org/10.1214/14-PS228}
   publisher={APS}
 }
 
-@article{yadav2022finite,
-  title={Finite-size scaling of critical avalanches},
-  author={Yadav, Avinash Chand and Quadir, Abdul and Jafri, Haider Hasan},
-  journal={Physical Review E},
-  volume={106},
-  number={1},
-  pages={014148},
-  year={2022},
-  publisher={APS}
-}
-
-@article{clauset2009power,
-  title={Power-law distributions in empirical data},
-  author={Clauset, Aaron and Shalizi, Cosma Rohilla and Newman, Mark EJ},
-  journal={SIAM review},
-  volume={51},
-  number={4},
-  pages={661--703},
-  year={2009},
-  publisher={SIAM}
-}
-
-@article{quadir2024scaling,
-  title={Scaling of Extreme Events in 2d BTW Sandpile},
-  author={Quadir, Abdul and Jafri, Haider Hasan},
-  journal={arXiv preprint arXiv:2410.05705},
-  year={2024}
-}
-
-
-@article{bak1987self,
-  title={Self-organized criticality: An explanation of the 1/f noise},
-  author={Bak, Per and Tang, Chao and Wiesenfeld, Kurt},
-  journal={Physical review letters},
-  volume={59},
-  number={4},
-  pages={381},
-  year={1987},
-  publisher={APS}
-}
-
-@article{byrd1995limited,
-  title={A limited memory algorithm for bound constrained optimization},
-  author={Byrd, Richard H and Lu, Peihuang and Nocedal, Jorge and Zhu, Ciyou},
-  journal={SIAM Journal on scientific computing},
-  volume={16},
-  number={5},
-  pages={1190--1208},
-  year={1995},
-  publisher={SIAM}
-}

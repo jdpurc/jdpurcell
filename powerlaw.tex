@@ -5,7 +5,7 @@
 The linear component of the distribution observed in Figure \ref{fig:simulation_statistics} suggests fitting a power law distribution to the simulated sequence of avalanche sizes and areas.
 
 We hypothesize a power law scaling relationship for Toppling Size $S$ and area $A$ of the form:
-\[ p(X=x; \tau, x_{max}) = C_{\tau, x_{max}} x^{-\tau} \text{ for } x \in \{1, \cdots, x_{max}\}\]
+\[ p(X=x; \tau, x_{max}) = \frac{1}{C_{\tau, x_{max}}} x^{-\tau} \text{ for } x \in \{1, \cdots, x_{max}\}\]
 where $x_{max} = x_{max}(L)$ is a cutoff value reflecting the observed decay of the distribution away from power law scaling due to the finite lattice size $L$. 
 
 The shape of the pmf under varying parameter values can be observed in Figure \ref{fig:powerlaw_params}.
@@ -34,8 +34,11 @@ To estimate the parameter $\tau$ assuming known $x_{max}$, we compute its Maximu
 This is the value $\hat{\tau}$ that satisfies:
 \[\hat{\tau} = \argmax_{\tau} \mathcal{L}(\mathbf{x}; \tau, x_{max}) = \argmin_{\tau} \left\{- \log \mathcal{L}(\mathbf{x}; \tau, x_{max}) \right\}\]
 
-Because the normalising constant $C_{\tau, x_{max}}$ depends on the parameter $\tau$, we cannot find an analytic solution for $\hat{\tau}$ and rely on numerical optimisation techniques.
-The numerical optimisation technique used here is the L-BFGS-B algorithm introduced by Byrd et al. (1995) \cite{byrd1995limited} and implemented in the \texttt{scipy} python library.
+\textbf{A practical note:} Because the normalising constant $C_{\tau, x_{max}}$ depends on the parameter $\tau$, we cannot find an analytic solution for $\hat{\tau}$ and rely on numerical optimisation techniques.
+The numerical optimisation technique used here is the L-BFGS-B algorithm introduced by Byrd et al. (1995) \cite{byrd1995limited} and implemented in the \texttt{scipy} python library. 
+Vectorisation is used via \texttt{numpy} arrays to improve the efficiency of the likelihood estimation, which requires computing the log-pmf of each sample point. 
+Finally, to prevent numerical underflow when dealing with tiny probabilties of tail events, the \texttt{logsumexp} function from \texttt{scipy} was used; this function provides an underflow-resistant method for calculating an expression of the form $\log \sum_{i} e^{Q_i}$ where $e^{Q_i}$ ranges across a range of scales, which was the case when computing the normalising constants.
+These methods were used across all likelihood estimations in this project.
 
 Let $\tau = \tau_s(L), x_{max} = s_{max}(L)$ for modelling the avalanche size, $\tau = \tau_a(L), x_{max} = a_{max}(L)$ for modelling the avalanche area, and $\tau = \tau_d(L), x_{max} = d_{max}(L)$ for modelling the avalanche $L_1$ length.
 We first consider a full-data estimation procedure, where we ignore the non-linear distribution tails and fit $\tau$ for each statistic considered and lattice size simulated. Here, we fix $a_{max}(L) = L^2$, $d_{max}(L) = 2L$, and $s_{max}(L) = 10L^2$ as known; this is clearly justified as the theoretical maximum for avalanche area and $L_1$ length, and is a computational adjustment for avalanche size that exceeds any observed avalanche size in the simulated data.
@@ -76,7 +79,7 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
             100 &  1.14 &  1.08 &  0.98 \\
         \hline
         \end{tabular}
-        \captionof{table}{Bounded Power Law MLE coefficients $hat{\tau}$ obtained for varying lattice sizes $L$}
+        \captionof{table}{Bounded Power Law MLE coefficients $\hat{\tau}$ obtained for varying lattice sizes $L$}
         \label{tab:powerlaw_taus}
     \end{minipage}
 
@@ -86,7 +89,7 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
 \begin{center}
 \includegraphics[width=\linewidth]{figures/powerlaw_mle_viz.png}
 \end{center}
-\caption{Fitted MLEs for the bounded power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines represent the fixed parameter $x_{max}$.}
+\caption{Full-data bounded power law MLE fits are skewed down from the true power law coefficient due to the tail decay. Select lattice sizes $L = 5, 30, 100$ are depicted. The fits for all lattice sizes are depicted in Appendix Figure \ref{fig:APPENDIX_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, the centre column shows avalanche area, while the right column shows avalanche $L_1$ length. The dashed vertical lines represent the fixed parameter $x_{max}$.}
 \label{fig:powerlaw_fitted_mle}
 \end{figure} 
 
@@ -95,12 +98,13 @@ The estimates obtained are presented in Figure \ref{fig:powerlaw_taus} and Table
 
 As a first correction for the finite lattice effect, we consider restricting $s_{max}, a_{max}, d_{max}$ to include only those topple sizes, areas, and lengths for which linearity is observed in the log-log plot. As we saw in Figure \ref{fig:powerlaw_params}, changing $x_{max}$ should not affect the estimated slope of the distribution.
 
-To avoid manually setting an arbitrary maximum for each value of $L$, here we consider the rule-of-thumb approximation $s_{max}0.2 L^2, a_{max}= 0.1 L^2, d_{max} = 0.5 L$.
+To avoid manually setting an arbitrary maximum for each value of $L$, here we consider the rule-of-thumb approximation $s_{max}=0.2 L^2, a_{max}= 0.1 L^2, d_{max} = 0.5 L$.
 Clearly, there are significant limitations to this approach: the cutoff rule was chosen arbitrarily, and data is significantly limited for lower values of L. However this will help us get a more accurate idea of the power law structure.
 
 
-The results in Table \ref{tab:powerlaw_trunc_taus} and Figure \ref{fig:powerlaw_trunc_taus} are noticeably lower than the previous estimates in Table \ref{tab:powerlaw_taus}, with an increasing trend rather than decreasing.
-From these two analyses, it is reasonable that the powerlaw-governed section of the distribution has exponent $\tau_s, \tau_a \approx 1$, which is consistent with the estimate presented in the original 1987 paper by Bak et al. \cite{bak1987self}. 
+The results in Table \ref{tab:powerlaw_trunc_taus} and Figure \ref{fig:powerlaw_trunc_taus} are noticeably lower than the previous estimates in Table \ref{tab:powerlaw_taus}, with an increasing trend rather than decreasing. The fits in Figure \ref{fig:powerlaw_trunc_fitted_mle} are reasonably good for avalanche size and area, however nonlinearity is visible in the avalanche $L_1$ distance plot. This may indicate that the assumed power law scaling is not as well supported from the obtained distribution as it is for size and area.
+
+From these two analyses, it is reasonable that the powerlaw-governed section of the distribution has exponent $\tau_s, \tau_a \approx 1$, which is consistent with the estimate presented in the original 1987 paper by Bak et al. \cite{btw1987intro}. 
 
 \begin{figure}
     \centering
@@ -141,10 +145,10 @@ From these two analyses, it is reasonable that the powerlaw-governed section of 
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.80\linewidth]{figures/powerlaw_trunc_mle_viz.png}
+\includegraphics[width=\linewidth]{figures/powerlaw_trunc_mle_viz.png}
 \end{center}
-\caption{Fitted MLEs for the manually-truncated power law distribution against the simulated data, for select lattice sizes $L = 5, 30, 100$. The full data fits are depicted in Appendix Figure \ref{fig:APPENDIX_trunc_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, while the right column shows avalanche area. The dashed vertical lines on the right show the manual truncation rule bounds $s_{max} = 0.2L^2, a_{max} = 0.1 L^2, d_{max}=0.5L$.}
+\caption{MLE Estimates of the power law scaling coefficient obtained by manually truncating the data tail. Lattice sizes $L = 5, 30, 100$ are depicted - the full data fits are shown in Appendix Figure \ref{fig:APPENDIX_trunc_powerlaw_mle_viz}. MLEs are drawn as black points with a connecting line drawn for illustration purposes. The left column shows avalanche size, the centre column shows avalanche area, and the right column shows avalanche $L_1$ length. The dashed vertical lines on the right show the manual truncation rule bounds $s_{max} = 0.2L^2, a_{max} = 0.1 L^2, d_{max}=0.5L$.}
 \label{fig:powerlaw_trunc_fitted_mle}
 \end{figure} 
 
-To avoid discarding data, we turn to explicit models of the tail distribution, which we use to attempt to capture the effect of the finite lattice size $L$ and obtain a more informed approximation to the powerlaw scaling coefficient.
+To avoid discarding data, and to model the distribution explicitly, we turn to models that allow for tail decay. We attempt to capture the effect of the finite lattice size $L$ and obtain a more informed approximation to the power law scaling coefficient.

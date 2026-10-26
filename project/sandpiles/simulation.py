@@ -105,6 +105,7 @@ def _simulate_topple(
             board[x, y] += 1
 
             # if neighbour should topple, add it to the queue
+            # check exact equality so that cells are only added to the queue ONCE.
             if board[x, y] == 4:
                 queue[qtail, 0] = x
                 queue[qtail, 1] = y
